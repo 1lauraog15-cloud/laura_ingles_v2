@@ -1,0 +1,97 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Connectors
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "🔀 Connectors" [level=1] [ref=e44]
+        - paragraph [ref=e45]: 7 connectors in 7 categories · Browse by function or practise fill in the blank
+      - generic [ref=e46]:
+        - button "📖 Browse by Category" [ref=e47] [cursor=pointer]
+        - button "✏️ Fill in the Blank" [ref=e48] [cursor=pointer]
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - button "➕ Addition" [ref=e51] [cursor=pointer]
+          - button "🔁 Cause & Result" [ref=e52] [cursor=pointer]
+          - button "🤝 Concession" [ref=e53] [cursor=pointer]
+          - button "⚡ Contrast" [ref=e54] [cursor=pointer]
+          - button "🔥 Emphasis" [ref=e55] [cursor=pointer]
+          - button "💡 Exemplification" [ref=e56] [cursor=pointer]
+          - button "🎯 Purpose" [ref=e57] [cursor=pointer]
+        - generic [ref=e59]:
+          - generic [ref=e60]: ➕ Addition
+          - generic [ref=e61]:
+            - generic [ref=e63] [cursor=pointer]:
+              - generic [ref=e64]: furthermore
+              - generic [ref=e65]: además / es más
+            - generic [ref=e67] [cursor=pointer]:
+              - generic [ref=e68]: moreover
+              - generic [ref=e69]: es más / asimismo
+            - generic [ref=e71] [cursor=pointer]:
+              - generic [ref=e72]: in addition to
+              - generic [ref=e73]: además de
+            - generic [ref=e75] [cursor=pointer]:
+              - generic [ref=e76]: what is more
+              - generic [ref=e77]: es más / encima
+            - generic [ref=e79] [cursor=pointer]:
+              - generic [ref=e80]: not only...but also
+              - generic [ref=e81]: no solo… sino también
+            - generic [ref=e83] [cursor=pointer]:
+              - generic [ref=e84]: on top of that
+              - generic [ref=e85]: encima de eso / para colmo

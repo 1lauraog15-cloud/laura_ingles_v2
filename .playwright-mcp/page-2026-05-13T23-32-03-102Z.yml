@@ -1,0 +1,174 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Use of English
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "🎯 Use of English" [level=1] [ref=e44]
+        - paragraph [ref=e45]: Cambridge C1/C2 · Key Word Transformation · Word Formation · Multiple Choice Cloze · Open Cloze
+      - generic [ref=e46]:
+        - button "🔑 Key Word Transform" [ref=e47] [cursor=pointer]
+        - button "🔤 Word Formation" [ref=e48] [cursor=pointer]
+        - button "☑️ Multiple Choice" [ref=e49] [cursor=pointer]
+        - button "📝 Open Cloze" [active] [ref=e50] [cursor=pointer]
+        - button "🏆 Cambridge Test 1" [ref=e51] [cursor=pointer]
+      - generic [ref=e497]:
+        - generic [ref=e499]: Part 2 — Open Cloze
+        - paragraph [ref=e500]: Read each text and fill each gap with ONE word only.
+        - generic [ref=e501]:
+          - generic [ref=e502]:
+            - generic [ref=e503]: Technology & Society
+            - generic [ref=e504]:
+              - text: The rapid pace of technological change has (1)
+              - textbox "_" [ref=e505]
+              - text: rise to a range of ethical questions that society is only beginning to grapple (2)
+              - textbox "_" [ref=e506]
+              - text: . Critics argue that artificial intelligence, far (3)
+              - textbox "_" [ref=e507]
+              - text: being a neutral tool, reflects the biases of those who create it. (4)
+              - textbox "_" [ref=e508]
+              - text: is more, the concentration of data in the hands of a few corporations poses risks (5)
+              - textbox "_" [ref=e509]
+              - text: democratic oversight. (6)
+              - textbox "_" [ref=e510]
+              - text: these concerns are taken seriously, there is little doubt that regulation will need to keep pace with innovation.
+            - generic [ref=e511]:
+              - button "Check Answers" [ref=e512] [cursor=pointer]
+              - button "Reveal All" [ref=e513] [cursor=pointer]
+              - button "💡 Tips" [ref=e514] [cursor=pointer]
+          - generic [ref=e515]:
+            - generic [ref=e516]: Urban Migration
+            - generic [ref=e517]:
+              - text: It (1)
+              - textbox "_" [ref=e518]
+              - text: widely acknowledged that urbanisation has transformed the social fabric of many countries. (2)
+              - textbox "_" [ref=e519]
+              - text: growing numbers of people migrate from rural areas, cities face mounting pressure on housing and infrastructure. (3)
+              - textbox "_" [ref=e520]
+              - text: all the challenges this entails, urban centres continue to attract those (4)
+              - textbox "_" [ref=e521]
+              - text: seek better economic opportunities. Policymakers are increasingly aware (5)
+              - textbox "_" [ref=e522]
+              - text: the need to strike a balance between economic growth and social cohesion, (6)
+              - textbox "_" [ref=e523]
+              - text: as to avoid deepening existing inequalities.
+            - generic [ref=e524]:
+              - button "Check Answers" [ref=e525] [cursor=pointer]
+              - button "Reveal All" [ref=e526] [cursor=pointer]
+              - button "💡 Tips" [ref=e527] [cursor=pointer]
+          - generic [ref=e528]:
+            - generic [ref=e529]: The Value of Failure
+            - generic [ref=e530]:
+              - text: Failure is (1)
+              - textbox "_" [ref=e531]
+              - text: often perceived as something to be avoided at all costs. Yet (2)
+              - textbox "_" [ref=e532]
+              - text: closer inspection, it becomes clear that setbacks play a crucial (3)
+              - textbox "_" [ref=e533]
+              - text: in personal development. Some of the most successful entrepreneurs attribute (4)
+              - textbox "_" [ref=e534]
+              - text: achievements not to their triumphs, but to the lessons learnt from their mistakes. (5)
+              - textbox "_" [ref=e535]
+              - text: is not to say that failure should be welcomed for its (6)
+              - textbox "_" [ref=e536]
+              - text: sake, but rather that our response to it defines our capacity for growth.
+            - generic [ref=e537]:
+              - button "Check Answers" [ref=e538] [cursor=pointer]
+              - button "Reveal All" [ref=e539] [cursor=pointer]
+              - button "💡 Tips" [ref=e540] [cursor=pointer]
+          - generic [ref=e541]:
+            - generic [ref=e542]: The Future of Work
+            - generic [ref=e543]:
+              - text: Automation is transforming the workplace at a pace (1)
+              - textbox "_" [ref=e544]
+              - text: has few historical precedents. While many jobs are (2)
+              - textbox "_" [ref=e545]
+              - text: to disappear, others will evolve, and entirely new roles will emerge. The key challenge facing governments and businesses (3)
+              - textbox "_" [ref=e546]
+              - text: is how to equip workers with the skills they will need. (4)
+              - textbox "_" [ref=e547]
+              - text: simply retraining existing workers, some economists argue that a more fundamental rethink of education is called (5)
+              - textbox "_" [ref=e548]
+              - text: . Without such investment, there is a real risk (6)
+              - textbox "_" [ref=e549]
+              - text: large segments of the population will be left behind.
+            - generic [ref=e550]:
+              - button "Check Answers" [ref=e551] [cursor=pointer]
+              - button "Reveal All" [ref=e552] [cursor=pointer]
+              - button "💡 Tips" [ref=e553] [cursor=pointer]
+          - generic [ref=e554]:
+            - generic [ref=e555]: Cultural Heritage
+            - generic [ref=e556]:
+              - text: Preserving cultural heritage has become (1)
+              - textbox "_" [ref=e557]
+              - text: of the most pressing concerns of our time. Monuments and traditions that have survived (2)
+              - textbox "_" [ref=e558]
+              - text: centuries are now threatened by climate change, urban development, and neglect. Governments (3)
+              - textbox "_" [ref=e559]
+              - text: the world over have pledged resources to address this issue, (4)
+              - textbox "_" [ref=e560]
+              - text: progress has been slow. Critics argue that without sustained funding, many sites will be lost (5)
+              - textbox "_" [ref=e561]
+              - text: good. (6)
+              - textbox "_" [ref=e562]
+              - text: the case may be, there can be no doubt that swift action is needed.
+            - generic [ref=e563]:
+              - button "Check Answers" [ref=e564] [cursor=pointer]
+              - button "Reveal All" [ref=e565] [cursor=pointer]
+              - button "💡 Tips" [ref=e566] [cursor=pointer]

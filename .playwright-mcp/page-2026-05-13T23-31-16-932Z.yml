@@ -1,0 +1,246 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Verbs & Prepositions
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "🔗 Verbs & Prepositions" [level=1] [ref=e44]
+        - paragraph [ref=e45]: 35 verb + preposition pairs · Browse, flashcards (verb → preposition), or fill in the blank
+      - generic [ref=e46]:
+        - button "📖 Browse" [ref=e47] [cursor=pointer]
+        - button "🃏 Flashcards" [ref=e48] [cursor=pointer]
+        - button "✏️ Fill in the Blank" [ref=e49] [cursor=pointer]
+      - generic [ref=e50]:
+        - textbox "Search verbs, prepositions, meanings…" [ref=e51]
+        - generic [ref=e52]:
+          - generic [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]: abstain
+            - generic [ref=e56]: +
+            - generic [ref=e57]: from
+            - generic [ref=e58]: refrain from
+          - generic [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]: account
+            - generic [ref=e62]: +
+            - generic [ref=e63]: for
+            - generic [ref=e64]: explain or represent
+          - generic [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]: adhere
+            - generic [ref=e68]: +
+            - generic [ref=e69]: to
+            - generic [ref=e70]: stick to or follow strictly
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]: agree
+            - generic [ref=e74]: +
+            - generic [ref=e75]: "on"
+            - generic [ref=e76]: reach a shared decision
+          - generic [ref=e78] [cursor=pointer]:
+            - generic [ref=e79]: allude
+            - generic [ref=e80]: +
+            - generic [ref=e81]: to
+            - generic [ref=e82]: refer to indirectly
+          - generic [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: amount
+            - generic [ref=e86]: +
+            - generic [ref=e87]: to
+            - generic [ref=e88]: add up to; be equivalent to
+          - generic [ref=e90] [cursor=pointer]:
+            - generic [ref=e91]: appeal
+            - generic [ref=e92]: +
+            - generic [ref=e93]: to
+            - generic [ref=e94]: attract or interest; make a formal request
+          - generic [ref=e96] [cursor=pointer]:
+            - generic [ref=e97]: attribute
+            - generic [ref=e98]: +
+            - generic [ref=e99]: to
+            - generic [ref=e100]: regard as caused by
+          - generic [ref=e102] [cursor=pointer]:
+            - generic [ref=e103]: benefit
+            - generic [ref=e104]: +
+            - generic [ref=e105]: from
+            - generic [ref=e106]: gain an advantage from
+          - generic [ref=e108] [cursor=pointer]:
+            - generic [ref=e109]: cater
+            - generic [ref=e110]: +
+            - generic [ref=e111]: for
+            - generic [ref=e112]: provide what is needed by
+          - generic [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: collaborate
+            - generic [ref=e116]: +
+            - generic [ref=e117]: with
+            - generic [ref=e118]: work jointly with
+          - generic [ref=e120] [cursor=pointer]:
+            - generic [ref=e121]: comply
+            - generic [ref=e122]: +
+            - generic [ref=e123]: with
+            - generic [ref=e124]: act in accordance with
+          - generic [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]: concentrate
+            - generic [ref=e128]: +
+            - generic [ref=e129]: "on"
+            - generic [ref=e130]: focus attention on
+          - generic [ref=e132] [cursor=pointer]:
+            - generic [ref=e133]: conform
+            - generic [ref=e134]: +
+            - generic [ref=e135]: to
+            - generic [ref=e136]: behave according to accepted standards
+          - generic [ref=e138] [cursor=pointer]:
+            - generic [ref=e139]: consist
+            - generic [ref=e140]: +
+            - generic [ref=e141]: of
+            - generic [ref=e142]: be composed of
+          - generic [ref=e144] [cursor=pointer]:
+            - generic [ref=e145]: contribute
+            - generic [ref=e146]: +
+            - generic [ref=e147]: to
+            - generic [ref=e148]: give or supply to help achieve
+          - generic [ref=e150] [cursor=pointer]:
+            - generic [ref=e151]: deal
+            - generic [ref=e152]: +
+            - generic [ref=e153]: with
+            - generic [ref=e154]: take action on; handle
+          - generic [ref=e156] [cursor=pointer]:
+            - generic [ref=e157]: depend
+            - generic [ref=e158]: +
+            - generic [ref=e159]: "on"
+            - generic [ref=e160]: be determined by; rely on
+          - generic [ref=e162] [cursor=pointer]:
+            - generic [ref=e163]: devote
+            - generic [ref=e164]: +
+            - generic [ref=e165]: to
+            - generic [ref=e166]: give all of something to a particular activity
+          - generic [ref=e168] [cursor=pointer]:
+            - generic [ref=e169]: differ
+            - generic [ref=e170]: +
+            - generic [ref=e171]: from
+            - generic [ref=e172]: be unlike
+          - generic [ref=e174] [cursor=pointer]:
+            - generic [ref=e175]: engage
+            - generic [ref=e176]: +
+            - generic [ref=e177]: in
+            - generic [ref=e178]: participate in; become involved in
+          - generic [ref=e180] [cursor=pointer]:
+            - generic [ref=e181]: insist
+            - generic [ref=e182]: +
+            - generic [ref=e183]: "on"
+            - generic [ref=e184]: demand forcefully
+          - generic [ref=e186] [cursor=pointer]:
+            - generic [ref=e187]: interfere
+            - generic [ref=e188]: +
+            - generic [ref=e189]: with
+            - generic [ref=e190]: prevent from working properly
+          - generic [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]: invest
+            - generic [ref=e194]: +
+            - generic [ref=e195]: in
+            - generic [ref=e196]: put resources into
+          - generic [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: object
+            - generic [ref=e200]: +
+            - generic [ref=e201]: to
+            - generic [ref=e202]: express opposition or disapproval
+          - generic [ref=e204] [cursor=pointer]:
+            - generic [ref=e205]: persevere
+            - generic [ref=e206]: +
+            - generic [ref=e207]: with
+            - generic [ref=e208]: continue in spite of difficulty
+          - generic [ref=e210] [cursor=pointer]:
+            - generic [ref=e211]: prevail
+            - generic [ref=e212]: +
+            - generic [ref=e213]: over
+            - generic [ref=e214]: prove more powerful than
+          - generic [ref=e216] [cursor=pointer]:
+            - generic [ref=e217]: refrain
+            - generic [ref=e218]: +
+            - generic [ref=e219]: from
+            - generic [ref=e220]: stop oneself from doing
+          - generic [ref=e222] [cursor=pointer]:
+            - generic [ref=e223]: result
+            - generic [ref=e224]: +
+            - generic [ref=e225]: in
+            - generic [ref=e226]: cause or bring about
+          - generic [ref=e228] [cursor=pointer]:
+            - generic [ref=e229]: stem
+            - generic [ref=e230]: +
+            - generic [ref=e231]: from
+            - generic [ref=e232]: originate from
+          - generic [ref=e234] [cursor=pointer]:
+            - generic [ref=e235]: strive
+            - generic [ref=e236]: +
+            - generic [ref=e237]: for
+            - generic [ref=e238]: make great efforts to achieve
+          - generic [ref=e240] [cursor=pointer]:
+            - generic [ref=e241]: subscribe
+            - generic [ref=e242]: +
+            - generic [ref=e243]: to
+            - generic [ref=e244]: agree with or support an idea
+          - generic [ref=e246] [cursor=pointer]:
+            - generic [ref=e247]: succeed
+            - generic [ref=e248]: +
+            - generic [ref=e249]: in
+            - generic [ref=e250]: achieve something
+          - generic [ref=e252] [cursor=pointer]:
+            - generic [ref=e253]: tamper
+            - generic [ref=e254]: +
+            - generic [ref=e255]: with
+            - generic [ref=e256]: interfere without permission
+          - generic [ref=e258] [cursor=pointer]:
+            - generic [ref=e259]: yield
+            - generic [ref=e260]: +
+            - generic [ref=e261]: to
+            - generic [ref=e262]: give way to pressure or demands

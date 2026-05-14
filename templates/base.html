@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Laura Inglés C1/C2{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sidebar-w: 256px;
+      --topbar-h: 56px;
+      --bg:        #f8f6f1;
+      --surface:   #ffffff;
+      --surface2:  #f0ede6;
+      --accent:    #e17055;
+      --accent-light: #e17055;
+      --text:      #1a1a1a;
+      --text-muted:#888888;
+      --border:    #e8e8e8;
+      --hover:     #f5f3ee;
+      --radius:    12px;
+      --transition: 0.15s ease;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ── */
+    .layout { display:flex; height:100vh; overflow:hidden; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100vh;
+      overflow-y: auto;
+      transition: transform var(--transition);
+      z-index: 200;
+    }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 20px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-brand .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--text);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-brand .brand-text {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .sidebar-brand .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-section { padding: 14px 12px 4px; }
+
+    .nav-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 8px;
+      margin-bottom: 6px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: background var(--transition), color var(--transition);
+      margin-bottom: 1px;
+      position: relative;
+    }
+
+    .nav-link:hover { background:var(--hover); color:var(--text); }
+
+    .nav-link.active {
+      color: var(--text);
+      font-weight: 700;
+      background: transparent;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 12px;
+      right: 12px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 1px;
+    }
+
+    .nav-link .nav-icon {
+      width: 20px;
+      text-align: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    /* ── Main ── */
+    .main { flex:1; display:flex; flex-direction:column; overflow:hidden; }
+
+    .topbar {
+      height: var(--topbar-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .topbar-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .topbar-hamburger:hover { color:var(--text); }
+
+    .topbar-title { font-size:15px; font-weight:700; color:var(--text); letter-spacing:-.2px; }
+
+    .topbar-badge {
+      background: var(--surface2);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+      border: 1px solid var(--border);
+    }
+
+    .content { flex:1; overflow-y:auto; padding:36px 40px; }
+
+    /* ── Overlay ── */
+    .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.25); z-index:150; }
+
+    /* ── Responsive ── */
+    @media (max-width:768px) {
+      .sidebar { position:fixed; top:0; left:0; transform:translateX(-100%); }
+      .sidebar.open { transform:translateX(0); }
+      .overlay.open { display:block; }
+      .topbar-hamburger { display:flex; align-items:center; }
+      .content { padding:20px 16px; }
+    }
+
+    /* ── Page header ── */
+    .page-header { margin-bottom:32px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+    .page-header h1 { font-size:26px; font-weight:700; letter-spacing:-.6px; color:var(--text); }
+    .page-header p  { color:var(--text-muted); margin-top:4px; font-size:14px; }
+
+    /* ── Shared component overrides (apply across all templates) ── */
+    .tab-btn.active          { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+    .filter-btn.active       { background:rgba(225,112,85,.12); color:var(--accent); border-color:rgba(225,112,85,.35); }
+    .pill.active             { background:rgba(225,112,85,.12) !important; color:var(--accent) !important; border-color:rgba(225,112,85,.4) !important; }
+    .cat-btn.active          { background:rgba(225,112,85,.12); color:var(--accent); border-color:rgba(225,112,85,.35); }
+    .fc-opt-btn.on           { background:rgba(225,112,85,.12); color:var(--accent); border-color:rgba(225,112,85,.35); }
+    .fib-filter-btn.active   { background:rgba(225,112,85,.12); color:var(--accent); border-color:rgba(225,112,85,.35); }
+    .inner-tab.active        { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+
+    /* Correct / wrong states — tuned for cream background */
+    .fib-input.correct  { border-color:#15803d !important; color:#15803d !important; }
+    .fib-input.wrong    { border-color:#b91c1c !important; color:#b91c1c !important; }
+    .gap-input.correct  { border-color:#15803d !important; color:#15803d !important; }
+    .gap-input.wrong    { border-color:#b91c1c !important; color:#b91c1c !important; }
+    .answer-input.correct { border-color:#15803d !important; background:rgba(21,128,61,.05) !important; }
+    .answer-input.wrong   { border-color:#b91c1c !important; background:rgba(185,28,28,.05) !important; }
+    .ex-input.correct  { border-color:#15803d !important; background:rgba(21,128,61,.05) !important; }
+    .ex-input.compare  { border-color:var(--accent) !important; background:rgba(225,112,85,.04) !important; }
+    .ex-textarea.checked { border-color:var(--accent) !important; background:rgba(225,112,85,.03) !important; }
+
+    .fib-feedback.correct  { background:rgba(21,128,61,.1)  !important; color:#15803d !important; }
+    .fib-feedback.wrong    { background:rgba(185,28,28,.09) !important; color:#b91c1c !important; }
+
+    .mcq-opt.correct  { background:rgba(21,128,61,.12)  !important; color:#15803d !important; border-color:rgba(21,128,61,.35) !important; }
+    .mcq-opt.wrong    { background:rgba(185,28,28,.09) !important; color:#b91c1c !important; border-color:rgba(185,28,28,.3) !important; }
+    .mcq-feedback.correct { background:rgba(21,128,61,.1)  !important; color:#15803d !important; }
+    .mcq-feedback.wrong   { background:rgba(185,28,28,.09) !important; color:#b91c1c !important; }
+
+    .model-answer  { color:#15803d !important; border-left-color:#15803d !important; background:rgba(21,128,61,.06) !important; }
+    .ex-answer     { color:#15803d !important; border-left-color:#15803d !important; background:rgba(21,128,61,.06) !important; }
+    .cloze-results { /* inline set */ }
+
+    .feedback-line.correct { color:#15803d !important; }
+    .feedback-line.wrong   { color:#b91c1c !important; }
+    .feedback-line.compare { color:var(--text-muted) !important; }
+
+    .assess-btn.got   { color:#15803d; border-color:rgba(21,128,61,.35); }
+    .assess-btn.got.active,.assess-btn.got:hover { background:rgba(21,128,61,.12) !important; }
+    .assess-btn.review   { color:#b45309; border-color:rgba(180,83,9,.35); }
+    .assess-btn.review.active,.assess-btn.review:hover { background:rgba(180,83,9,.1) !important; }
+
+    .reveal-btn.shown { background:rgba(21,128,61,.08); color:#15803d; border-color:rgba(21,128,61,.3); }
+
+    /* Chip colours for light bg */
+    .chip.syn { background:rgba(21,128,61,.1);  color:#15803d; }
+    .chip.ant { background:rgba(185,28,28,.09); color:#b91c1c; }
+    .chip.col { background:rgba(225,112,85,.1); color:var(--accent); }
+
+    /* Known toggle / dot */
+    .known-dot.on   { background:#15803d; }
+    .known-toggle.on { background:rgba(21,128,61,.1); color:#15803d; border-color:rgba(21,128,61,.3); }
+
+    /* Flashcard know/skip buttons */
+    .fc-btn.know { background:rgba(21,128,61,.1); color:#15803d; border-color:rgba(21,128,61,.3); }
+    .fc-btn.know:hover { background:rgba(21,128,61,.2); }
+    .fc-btn.skip { background:rgba(185,28,28,.08); color:#b91c1c; border-color:rgba(185,28,28,.25); }
+
+    /* Hint button stays amber */
+    .fib-btn.hint     { background:rgba(180,83,9,.08);  color:#b45309; border-color:rgba(180,83,9,.3); }
+    .fib-btn.hint-btn { background:rgba(180,83,9,.08);  color:#b45309; border-color:rgba(180,83,9,.3); }
+    .fib-btn.primary  { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+    .fib-btn.primary:hover { background:#333 !important; }
+    .check-btn { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+    .check-btn:hover:not(:disabled) { background:#333 !important; border-color:#333 !important; }
+    .check-btn:disabled { background:#aaa !important; border-color:#aaa !important; opacity:1 !important; }
+    .cloze-btn.primary { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+    .cloze-btn.primary:hover { background:#333 !important; }
+    .mcq-next { background:#1a1a1a !important; }
+    .mcq-next:hover { background:#333 !important; }
+    .fc-btn.primary { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+    .fc-btn.primary:hover { background:#333 !important; }
+
+    /* Flash messages */
+    .flash-list { list-style:none; margin-bottom:16px; }
+    .flash { padding:10px 16px; border-radius:var(--radius); font-size:14px; margin-bottom:8px; }
+    .flash.success { background:rgba(21,128,61,.1); color:#15803d; }
+    .flash.error   { background:rgba(185,28,28,.1); color:#b91c1c; }
+    .flash.info    { background:rgba(225,112,85,.1); color:var(--accent); }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">🎓</div>
+      <div>
+        <div class="brand-text">Laura Inglés</div>
+        <div class="brand-sub">C1 / C2 · Cambridge</div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-label">General</div>
+        <a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">
+          <span class="nav-icon">🏠</span> Home
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-label">Lexis</div>
+        <a href="{{ url_for('vocabulary') }}" class="nav-link {% if request.endpoint == 'vocabulary' %}active{% endif %}">
+          <span class="nav-icon">📚</span> Vocabulary
+        </a>
+        <a href="{{ url_for('phrasal_verbs') }}" class="nav-link {% if request.endpoint == 'phrasal_verbs' %}active{% endif %}">
+          <span class="nav-icon">⚡</span> Phrasal Verbs
+        </a>
+        <a href="{{ url_for('verbs_prepositions') }}" class="nav-link {% if request.endpoint == 'verbs_prepositions' %}active{% endif %}">
+          <span class="nav-icon">🔗</span> Verbs &amp; Prepositions
+        </a>
+        <a href="{{ url_for('collocations') }}" class="nav-link {% if request.endpoint == 'collocations' %}active{% endif %}">
+          <span class="nav-icon">🤝</span> Collocations
+        </a>
+        <a href="{{ url_for('idioms') }}" class="nav-link {% if request.endpoint == 'idioms' %}active{% endif %}">
+          <span class="nav-icon">💬</span> Idioms
+        </a>
+        <a href="{{ url_for('confusing_expressions') }}" class="nav-link {% if request.endpoint == 'confusing_expressions' %}active{% endif %}">
+          <span class="nav-icon">🔤</span> Confusing Expressions
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-label">Writing &amp; Grammar</div>
+        <a href="{{ url_for('connectors') }}" class="nav-link {% if request.endpoint == 'connectors' %}active{% endif %}">
+          <span class="nav-icon">🔀</span> Connectors
+        </a>
+        <a href="{{ url_for('grammar') }}" class="nav-link {% if request.endpoint == 'grammar' %}active{% endif %}">
+          <span class="nav-icon">✍️</span> Grammar
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-label">Exam Practice</div>
+        <a href="{{ url_for('use_of_english') }}" class="nav-link {% if request.endpoint == 'use_of_english' %}active{% endif %}">
+          <span class="nav-icon">🎯</span> Use of English
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Overlay (mobile) -->
+  <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="topbar">
+      <button class="topbar-hamburger" onclick="openSidebar()" aria-label="Menu">&#9776;</button>
+      <span class="topbar-title">{% block topbar_title %}Laura Inglés{% endblock %}</span>
+      <span class="topbar-badge">C1 / C2</span>
+    </header>
+
+    <main class="content">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flash-list">
+            {% for category, message in messages %}
+              <li class="flash {{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+</div>
+
+<script>
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
+</script>
+
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,113 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Grammar
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "✍️ Grammar" [level=1] [ref=e44]
+        - paragraph [ref=e45]: 8 grammar topics · C1/C2 structures for Cambridge writing and transformation tasks
+      - generic [ref=e46]:
+        - button "Inverted Conditionals" [ref=e47] [cursor=pointer]
+        - button "Cleft Sentences" [ref=e48] [cursor=pointer]
+        - button "Participle Clauses" [ref=e49] [cursor=pointer]
+        - button "Subjunctive & Formal Structures" [ref=e50] [cursor=pointer]
+        - button "Passive & Reporting Structures" [ref=e51] [cursor=pointer]
+        - button "Emphasis & Fronting" [ref=e52] [cursor=pointer]
+        - button "Mixed Conditionals" [ref=e53] [cursor=pointer]
+        - button "Hedging & Academic Tone" [ref=e54] [cursor=pointer]
+      - generic [ref=e56]:
+        - heading "Inverted Conditionals" [level=2] [ref=e57]
+        - button "📖 Grammar Explanation ▶" [ref=e59] [cursor=pointer]:
+          - text: 📖 Grammar Explanation
+          - generic [ref=e60]: ▶
+        - generic [ref=e61]:
+          - generic [ref=e62]: ✏️ Practice (4)
+          - button "Show all answers" [ref=e63] [cursor=pointer]
+        - generic [ref=e64]:
+          - generic [ref=e65]: Exercise 1
+          - generic [ref=e66]: "Rewrite using an inverted conditional:"
+          - generic [ref=e67]: If she had prepared more carefully, she would have passed the exam.
+          - textbox "Write your answer here…" [ref=e68]
+          - generic [ref=e69]:
+            - button "Check" [ref=e70] [cursor=pointer]
+            - button "Show Answer" [ref=e71] [cursor=pointer]
+        - generic [ref=e72]:
+          - generic [ref=e73]: Exercise 2
+          - generic [ref=e74]: "Rewrite using an inverted conditional:"
+          - generic [ref=e75]: If you should have any further questions, do not hesitate to contact us.
+          - textbox "Write your answer here…" [ref=e76]
+          - generic [ref=e77]:
+            - button "Check" [ref=e78] [cursor=pointer]
+            - button "Show Answer" [ref=e79] [cursor=pointer]
+        - generic [ref=e80]:
+          - generic [ref=e81]: Exercise 3
+          - generic [ref=e82]: "Rewrite using an inverted conditional:"
+          - generic [ref=e83]: If he were to stand down, the party would face a leadership crisis.
+          - textbox "Write your answer here…" [ref=e84]
+          - generic [ref=e85]:
+            - button "Check" [ref=e86] [cursor=pointer]
+            - button "Show Answer" [ref=e87] [cursor=pointer]
+        - generic [ref=e88]:
+          - generic [ref=e89]: Exercise 4
+          - generic [ref=e90]: "Rewrite using an inverted conditional:"
+          - generic [ref=e91]: If I had been informed earlier, I could have prevented the problem.
+          - textbox "Write your answer here…" [ref=e92]
+          - generic [ref=e93]:
+            - button "Check" [ref=e94] [cursor=pointer]
+            - button "Show Answer" [ref=e95] [cursor=pointer]

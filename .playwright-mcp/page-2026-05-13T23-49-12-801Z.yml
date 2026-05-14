@@ -1,0 +1,352 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Vocabulary
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "📚 Vocabulary" [level=1] [ref=e44]
+        - paragraph [ref=e45]: 92 C1/C2 words · Browse, study with flashcards, fill-in-the-blank, or word match
+      - generic [ref=e46]:
+        - button "📖 Browse" [ref=e47] [cursor=pointer]
+        - button "🃏 Flashcards" [ref=e48] [cursor=pointer]
+        - button "✏️ Fill in the Blank" [ref=e49] [cursor=pointer]
+        - button "🎯 Word Match" [ref=e50] [cursor=pointer]
+      - generic [ref=e51]:
+        - textbox "Search words, definitions, translations…" [ref=e52]
+        - generic [ref=e53]:
+          - button "All (92)" [ref=e54] [cursor=pointer]
+          - button "To Study (92)" [ref=e55] [cursor=pointer]
+          - button "Known ✓ (0)" [ref=e56] [cursor=pointer]
+        - generic [ref=e57]:
+          - generic [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]: acquiesce
+            - generic [ref=e62]: ceder / aceptar de mala gana
+          - generic [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]: acrimony
+            - generic [ref=e68]: acritud / amargura
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]: ambivalent
+            - generic [ref=e74]: ambivalente / con sentimientos encontrados
+          - generic [ref=e78] [cursor=pointer]:
+            - generic [ref=e79]: ameliorate
+            - generic [ref=e80]: mejorar / paliar
+          - generic [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: anachronistic
+            - generic [ref=e86]: anacrónico
+          - generic [ref=e90] [cursor=pointer]:
+            - generic [ref=e91]: arduous
+            - generic [ref=e92]: arduo / extenuante
+          - generic [ref=e96] [cursor=pointer]:
+            - generic [ref=e97]: astute
+            - generic [ref=e98]: astuto / perspicaz
+          - generic [ref=e102] [cursor=pointer]:
+            - generic [ref=e103]: attrition
+            - generic [ref=e104]: desgaste / atrición
+          - generic [ref=e108] [cursor=pointer]:
+            - generic [ref=e109]: benevolent
+            - generic [ref=e110]: benévolo / bondadoso
+          - generic [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]: byzantine
+            - generic [ref=e116]: bizantino / intrincado
+          - generic [ref=e120] [cursor=pointer]:
+            - generic [ref=e121]: cajole
+            - generic [ref=e122]: engatusar / persuadir con halagos
+          - generic [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]: candour
+            - generic [ref=e128]: franqueza / sinceridad
+          - generic [ref=e132] [cursor=pointer]:
+            - generic [ref=e133]: complacent
+            - generic [ref=e134]: complaciente consigo mismo / conformista
+          - generic [ref=e138] [cursor=pointer]:
+            - generic [ref=e139]: conciliatory
+            - generic [ref=e140]: conciliador
+          - generic [ref=e144] [cursor=pointer]:
+            - generic [ref=e145]: contentious
+            - generic [ref=e146]: controvertido / polémico
+          - generic [ref=e150] [cursor=pointer]:
+            - generic [ref=e151]: corroborate
+            - generic [ref=e152]: corroborar / confirmar
+          - generic [ref=e156] [cursor=pointer]:
+            - generic [ref=e157]: curtail
+            - generic [ref=e158]: recortar / limitar
+          - generic [ref=e162] [cursor=pointer]:
+            - generic [ref=e163]: deference
+            - generic [ref=e164]: deferencia / respeto
+          - generic [ref=e168] [cursor=pointer]:
+            - generic [ref=e169]: denigrate
+            - generic [ref=e170]: denigrar / menospreciar
+          - generic [ref=e174] [cursor=pointer]:
+            - generic [ref=e175]: disparate
+            - generic [ref=e176]: dispar / heterogéneo
+          - generic [ref=e180] [cursor=pointer]:
+            - generic [ref=e181]: disparity
+            - generic [ref=e182]: disparidad / desigualdad
+          - generic [ref=e186] [cursor=pointer]:
+            - generic [ref=e187]: eloquent
+            - generic [ref=e188]: elocuente
+          - generic [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]: endemic
+            - generic [ref=e194]: endémico
+          - generic [ref=e198] [cursor=pointer]:
+            - generic [ref=e199]: ephemeral
+            - generic [ref=e200]: efímero / pasajero
+          - generic [ref=e204] [cursor=pointer]:
+            - generic [ref=e205]: exacerbate
+            - generic [ref=e206]: exacerbar / empeorar
+          - generic [ref=e210] [cursor=pointer]:
+            - generic [ref=e211]: fastidious
+            - generic [ref=e212]: meticuloso / quisquilloso
+          - generic [ref=e216] [cursor=pointer]:
+            - generic [ref=e217]: fledgling
+            - generic [ref=e218]: novel / en ciernes
+          - generic [ref=e222] [cursor=pointer]:
+            - generic [ref=e223]: futile
+            - generic [ref=e224]: fútil / inútil
+          - generic [ref=e228] [cursor=pointer]:
+            - generic [ref=e229]: idiosyncrasy
+            - generic [ref=e230]: idiosincrasia / peculiaridad
+          - generic [ref=e234] [cursor=pointer]:
+            - generic [ref=e235]: impasse
+            - generic [ref=e236]: punto muerto / callejón sin salida
+          - generic [ref=e240] [cursor=pointer]:
+            - generic [ref=e241]: impetuous
+            - generic [ref=e242]: impetuoso / impulsivo
+          - generic [ref=e246] [cursor=pointer]:
+            - generic [ref=e247]: inadvertent
+            - generic [ref=e248]: involuntario / accidental
+          - generic [ref=e252] [cursor=pointer]:
+            - generic [ref=e253]: innate
+            - generic [ref=e254]: innato / natural
+          - generic [ref=e258] [cursor=pointer]:
+            - generic [ref=e259]: insidious
+            - generic [ref=e260]: insidioso / traicionero
+          - generic [ref=e264] [cursor=pointer]:
+            - generic [ref=e265]: lucid
+            - generic [ref=e266]: lúcido / claro
+          - generic [ref=e270] [cursor=pointer]:
+            - generic [ref=e271]: meticulous
+            - generic [ref=e272]: meticuloso / minucioso
+          - generic [ref=e276] [cursor=pointer]:
+            - generic [ref=e277]: mitigate
+            - generic [ref=e278]: mitigar / atenuar
+          - generic [ref=e282] [cursor=pointer]:
+            - generic [ref=e283]: nuanced
+            - generic [ref=e284]: matizado / con matices
+          - generic [ref=e288] [cursor=pointer]:
+            - generic [ref=e289]: obsequious
+            - generic [ref=e290]: obsequioso / servil
+          - generic [ref=e294] [cursor=pointer]:
+            - generic [ref=e295]: obsolete
+            - generic [ref=e296]: obsoleto / en desuso
+          - generic [ref=e300] [cursor=pointer]:
+            - generic [ref=e301]: paramount
+            - generic [ref=e302]: primordial / de suma importancia
+          - generic [ref=e306] [cursor=pointer]:
+            - generic [ref=e307]: pervasive
+            - generic [ref=e308]: omnipresente / generalizado
+          - generic [ref=e312] [cursor=pointer]:
+            - generic [ref=e313]: pragmatic
+            - generic [ref=e314]: pragmático
+          - generic [ref=e318] [cursor=pointer]:
+            - generic [ref=e319]: proliferate
+            - generic [ref=e320]: proliferar / multiplicarse
+          - generic [ref=e324] [cursor=pointer]:
+            - generic [ref=e325]: reticent
+            - generic [ref=e326]: reservado / reticente
+          - generic [ref=e330] [cursor=pointer]:
+            - generic [ref=e331]: resilience
+            - generic [ref=e332]: resiliencia / capacidad de recuperación
+          - generic [ref=e336] [cursor=pointer]:
+            - generic [ref=e337]: rhetoric
+            - generic [ref=e338]: retórica
+          - generic [ref=e342] [cursor=pointer]:
+            - generic [ref=e343]: scrutinise
+            - generic [ref=e344]: escrutar / examinar minuciosamente
+          - generic [ref=e348] [cursor=pointer]:
+            - generic [ref=e349]: spurious
+            - generic [ref=e350]: espurio / falso
+          - generic [ref=e354] [cursor=pointer]:
+            - generic [ref=e355]: tenacious
+            - generic [ref=e356]: tenaz / perseverante
+          - generic [ref=e360] [cursor=pointer]:
+            - generic [ref=e361]: transient
+            - generic [ref=e362]: transitorio / pasajero
+          - generic [ref=e366] [cursor=pointer]:
+            - generic [ref=e367]: ubiquitous
+            - generic [ref=e368]: ubicuo / omnipresente
+          - generic [ref=e372] [cursor=pointer]:
+            - generic [ref=e373]: unprecedented
+            - generic [ref=e374]: sin precedentes
+          - generic [ref=e378] [cursor=pointer]:
+            - generic [ref=e379]: vacillate
+            - generic [ref=e380]: vacilar / fluctuar
+          - generic [ref=e384] [cursor=pointer]:
+            - generic [ref=e385]: viable
+            - generic [ref=e386]: viable / factible
+          - generic [ref=e390] [cursor=pointer]:
+            - generic [ref=e391]: volatile
+            - generic [ref=e392]: volátil / inestable
+          - generic [ref=e396] [cursor=pointer]:
+            - generic [ref=e397]: wane
+            - generic [ref=e398]: menguar / decrecer
+          - generic [ref=e402] [cursor=pointer]:
+            - generic [ref=e403]: zenith
+            - generic [ref=e404]: cénit / apogeo
+          - generic [ref=e408] [cursor=pointer]:
+            - generic [ref=e409]: acknowledge
+            - generic [ref=e410]: reconocer / admitir
+          - generic [ref=e414] [cursor=pointer]:
+            - generic [ref=e415]: acquire
+            - generic [ref=e416]: adquirir / obtener
+          - generic [ref=e420] [cursor=pointer]:
+            - generic [ref=e421]: astonished
+            - generic [ref=e422]: asombrado / atónito
+          - generic [ref=e426] [cursor=pointer]:
+            - generic [ref=e427]: awareness
+            - generic [ref=e428]: conciencia / conocimiento
+          - generic [ref=e432] [cursor=pointer]:
+            - generic [ref=e433]: barely
+            - generic [ref=e434]: apenas / a duras penas
+          - generic [ref=e438] [cursor=pointer]:
+            - generic [ref=e439]: cranky
+            - generic [ref=e440]: malhumorado / irritable
+          - generic [ref=e444] [cursor=pointer]:
+            - generic [ref=e445]: delighted
+            - generic [ref=e446]: encantado / contentísimo
+          - generic [ref=e450] [cursor=pointer]:
+            - generic [ref=e451]: distressed
+            - generic [ref=e452]: angustiado / afligido
+          - generic [ref=e456] [cursor=pointer]:
+            - generic [ref=e457]: drought
+            - generic [ref=e458]: sequía
+          - generic [ref=e462] [cursor=pointer]:
+            - generic [ref=e463]: flattered
+            - generic [ref=e464]: halagado / adulado
+          - generic [ref=e468] [cursor=pointer]:
+            - generic [ref=e469]: foolish
+            - generic [ref=e470]: tonto / necio / imprudente
+          - generic [ref=e474] [cursor=pointer]:
+            - generic [ref=e475]: frightened
+            - generic [ref=e476]: asustado / atemorizado
+          - generic [ref=e480] [cursor=pointer]:
+            - generic [ref=e481]: glum
+            - generic [ref=e482]: sombrío / cabizbajo
+          - generic [ref=e486] [cursor=pointer]:
+            - generic [ref=e487]: hesitant
+            - generic [ref=e488]: vacilante / indeciso
+          - generic [ref=e492] [cursor=pointer]:
+            - generic [ref=e493]: infer
+            - generic [ref=e494]: inferir / deducir
+          - generic [ref=e498] [cursor=pointer]:
+            - generic [ref=e499]: influx
+            - generic [ref=e500]: afluencia / entrada masiva
+          - generic [ref=e504] [cursor=pointer]:
+            - generic [ref=e505]: lasting
+            - generic [ref=e506]: duradero / permanente
+          - generic [ref=e510] [cursor=pointer]:
+            - generic [ref=e511]: mogul
+            - generic [ref=e512]: magnate / poderoso
+          - generic [ref=e516] [cursor=pointer]:
+            - generic [ref=e517]: neglectful
+            - generic [ref=e518]: negligente / descuidado
+          - generic [ref=e522] [cursor=pointer]:
+            - generic [ref=e523]: nonchalant
+            - generic [ref=e524]: despreocupado / indiferente
+          - generic [ref=e528] [cursor=pointer]:
+            - generic [ref=e529]: oblivious
+            - generic [ref=e530]: ajeno a / inconsciente de
+          - generic [ref=e534] [cursor=pointer]:
+            - generic [ref=e535]: outrageous
+            - generic [ref=e536]: indignante / escandaloso
+          - generic [ref=e540] [cursor=pointer]:
+            - generic [ref=e541]: overwhelming
+            - generic [ref=e542]: abrumador / aplastante
+          - generic [ref=e546] [cursor=pointer]:
+            - generic [ref=e547]: promising
+            - generic [ref=e548]: prometedor / con buenas perspectivas
+          - generic [ref=e552] [cursor=pointer]:
+            - generic [ref=e553]: reckless
+            - generic [ref=e554]: temerario / imprudente
+          - generic [ref=e558] [cursor=pointer]:
+            - generic [ref=e559]: relieved
+            - generic [ref=e560]: aliviado
+          - generic [ref=e564] [cursor=pointer]:
+            - generic [ref=e565]: ripple
+            - generic [ref=e566]: ondulación / efecto en cadena
+          - generic [ref=e570] [cursor=pointer]:
+            - generic [ref=e571]: rusty
+            - generic [ref=e572]: oxidado / falto de práctica
+          - generic [ref=e576] [cursor=pointer]:
+            - generic [ref=e577]: selfish
+            - generic [ref=e578]: egoísta
+          - generic [ref=e582] [cursor=pointer]:
+            - generic [ref=e583]: solely
+            - generic [ref=e584]: únicamente / exclusivamente
+          - generic [ref=e588] [cursor=pointer]:
+            - generic [ref=e589]: sullen
+            - generic [ref=e590]: malhumorado / huraño
+          - generic [ref=e594] [cursor=pointer]:
+            - generic [ref=e595]: trustworthy
+            - generic [ref=e596]: digno de confianza / fiable
+          - generic [ref=e600] [cursor=pointer]:
+            - generic [ref=e601]: welfare
+            - generic [ref=e602]: bienestar / asistencia social
+          - generic [ref=e606] [cursor=pointer]:
+            - generic [ref=e607]: wealthy
+            - generic [ref=e608]: adinerado / pudiente

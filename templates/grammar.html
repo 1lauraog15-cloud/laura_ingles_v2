@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block title %}Grammar · Laura Inglés{% endblock %}
+{% block topbar_title %}Grammar{% endblock %}
+
+{% block extra_head %}
+<style>
+/* Topic pills */
+.pills-wrap{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px;scrollbar-width:none}
+.pills-wrap::-webkit-scrollbar{display:none}
+.pill{flex-shrink:0;padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap}
+.pill:hover{color:var(--text);border-color:var(--accent)}
+.pill.active{background:rgba(225,112,85,.15);color:var(--accent-light);border-color:rgba(225,112,85,.4)}
+
+/* Panel */
+.topic-panel{display:none}.topic-panel.active{display:block}
+
+/* Accordion */
+.accordion{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.accordion-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:transparent;border:none;color:var(--text);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left}
+.accordion-btn:hover{background:var(--hover)}
+.accordion-arrow{font-size:12px;color:var(--text-muted);transition:transform .2s;display:inline-block}
+.accordion-btn.open .accordion-arrow{transform:rotate(90deg)}
+.accordion-body{display:none;padding:0 18px 16px}
+.accordion-btn.open + .accordion-body{display:block}
+.explanation-text{font-size:14px;color:var(--text);line-height:1.9}
+.explanation-text strong{color:var(--accent-light)}
+.explanation-text em{color:var(--text-muted);font-style:italic}
+
+/* Exercises */
+.exercises-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px}
+.ex-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.ex-num{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--text-muted);font-weight:700;margin-bottom:6px}
+.ex-instruction{font-size:12px;color:var(--accent-light);font-weight:600;margin-bottom:8px}
+.ex-prompt{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.ex-prompt strong{color:var(--accent-light)}
+.ex-textarea{width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;outline:none;box-sizing:border-box;margin-bottom:10px;transition:border-color .15s;resize:vertical;min-height:70px;line-height:1.6}
+.ex-textarea:focus{border-color:var(--accent)}
+.ex-textarea.checked{border-color:rgba(225,112,85,.3);background:rgba(225,112,85,.04)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.check-btn{padding:8px 18px;border-radius:8px;background:var(--accent);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.check-btn:hover{background:var(--accent-light)}
+.check-btn:disabled{opacity:.45;cursor:default}
+.show-btn{padding:8px 14px;border-radius:8px;background:transparent;color:var(--text-muted);border:1px solid var(--border);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.show-btn:hover{color:var(--text);border-color:var(--accent)}
+.model-answer{display:none;background:var(--surface2);border-radius:8px;padding:10px 14px;font-size:13.5px;color:#48c78e;border-left:3px solid #48c78e;margin-top:4px;margin-bottom:10px;line-height:1.6}
+.self-assess{display:none;gap:8px;margin-top:6px}
+.self-assess.visible{display:flex}
+.assess-label{font-size:12px;color:var(--text-muted);font-weight:600;align-self:center;margin-right:4px}
+.assess-btn{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:transparent;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s}
+.assess-btn.got{color:#48c78e;border-color:rgba(72,199,142,.4)}
+.assess-btn.got:hover,.assess-btn.got.active{background:rgba(72,199,142,.2)}
+.assess-btn.review{color:#ffc107;border-color:rgba(255,193,7,.4)}
+.assess-btn.review:hover,.assess-btn.review.active{background:rgba(255,193,7,.15)}
+.progress-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.progress-text{font-size:13px;color:var(--text-muted);font-weight:600}
+.reveal-all-btn{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.reveal-all-btn:hover{color:var(--text);border-color:var(--accent)}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>✍️ Grammar</h1>
+  <p>{{ exercises|length }} grammar topics · C1/C2 structures for Cambridge writing and transformation tasks</p>
+</div>
+
+<div class="pills-wrap" id="pills"></div>
+<div id="panels"></div>
+
+<script>
+const EXERCISES = {{ exercises | tojson }};
+
+function md2html(text) {
+  if (!text) return '';
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+?)\*/g, '<em>$1</em>')
+    .replace(/→\s*/g, '<span style="color:var(--accent-light)">→ </span>')
+    .replace(/⚠️/g, '<span style="color:#ffc107">⚠️</span>')
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n•/g, '<br>•')
+    .replace(/\n\|/g, '<br>|');
+}
+
+function promptHtml(text) {
+  return (text||'')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\((.+?)\)/g,'<em style="color:var(--text-muted)">($1)</em>');
+}
+
+const pillsEl = document.getElementById('pills');
+const panelsEl = document.getElementById('panels');
+
+EXERCISES.forEach((topic, i) => {
+  /* pill */
+  const pill = document.createElement('button');
+  pill.className = 'pill' + (i===0 ? ' active' : '');
+  pill.textContent = topic.topic;
+  pill.onclick = () => {
+    document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.topic-panel').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+    document.getElementById('tp-'+i).classList.add('active');
+  };
+  pillsEl.appendChild(pill);
+
+  /* exercises html */
+  const exHtml = topic.exercises.map((ex, j) => `
+    <div class="ex-card" id="ex-card-${i}-${j}">
+      <div class="ex-num">Exercise ${j+1}</div>
+      <div class="ex-instruction">${ex.instruction}</div>
+      <div class="ex-prompt">${promptHtml(ex.prompt)}</div>
+      <textarea class="ex-textarea" id="ex-ta-${i}-${j}" placeholder="Write your answer here…" rows="3"></textarea>
+      <div class="btn-row">
+        <button class="check-btn" id="ex-cbtn-${i}-${j}" onclick="exCheck(${i},${j})">Check</button>
+        <button class="show-btn" onclick="exShow(${i},${j})">Show Answer</button>
+      </div>
+      <div class="model-answer" id="ex-ans-${i}-${j}">${ex.answer}</div>
+      <div class="self-assess" id="ex-assess-${i}-${j}">
+        <span class="assess-label">How did you do?</span>
+        <button class="assess-btn got" onclick="markAssess(${i},${j},'got')">✓ Got it</button>
+        <button class="assess-btn review" onclick="markAssess(${i},${j},'review')">↺ Review</button>
+      </div>
+    </div>`).join('');
+
+  /* panel */
+  const panel = document.createElement('div');
+  panel.className = 'topic-panel' + (i===0 ? ' active' : '');
+  panel.id = 'tp-' + i;
+  panel.innerHTML = `
+    <h2 style="font-size:20px;font-weight:700;margin-bottom:16px">${topic.topic}</h2>
+
+    <div class="accordion">
+      <button class="accordion-btn" onclick="toggleAccordion(this)">
+        📖 Grammar Explanation
+        <span class="accordion-arrow">▶</span>
+      </button>
+      <div class="accordion-body">
+        <div class="explanation-text">${md2html(topic.explanation)}</div>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <span class="exercises-title" style="margin-bottom:0">✏️ Practice (${topic.exercises.length})</span>
+      <button class="reveal-all-btn" onclick="revealAll(${i},${topic.exercises.length})">Show all answers</button>
+    </div>
+    ${exHtml}
+  `;
+  panelsEl.appendChild(panel);
+});
+
+function toggleAccordion(btn) {
+  btn.classList.toggle('open');
+}
+
+function exCheck(topicIdx, exIdx) {
+  const ta = document.getElementById(`ex-ta-${topicIdx}-${exIdx}`);
+  const cbtn = document.getElementById(`ex-cbtn-${topicIdx}-${exIdx}`);
+  const ansEl = document.getElementById(`ex-ans-${topicIdx}-${exIdx}`);
+  const assessEl = document.getElementById(`ex-assess-${topicIdx}-${exIdx}`);
+  if (!ta || ta.disabled) return;
+  ta.disabled = true;
+  ta.classList.add('checked');
+  ansEl.style.display = 'block';
+  assessEl.classList.add('visible');
+  if (cbtn) cbtn.disabled = true;
+}
+
+function exShow(topicIdx, exIdx) {
+  const ta = document.getElementById(`ex-ta-${topicIdx}-${exIdx}`);
+  const cbtn = document.getElementById(`ex-cbtn-${topicIdx}-${exIdx}`);
+  const ansEl = document.getElementById(`ex-ans-${topicIdx}-${exIdx}`);
+  const assessEl = document.getElementById(`ex-assess-${topicIdx}-${exIdx}`);
+  const showing = ansEl.style.display === 'block';
+  ansEl.style.display = showing ? 'none' : 'block';
+  if (!showing) {
+    if (ta && !ta.disabled) { ta.disabled = true; ta.classList.add('checked'); }
+    if (cbtn) cbtn.disabled = true;
+    assessEl.classList.add('visible');
+  }
+}
+
+function markAssess(topicIdx, exIdx, result) {
+  const assessEl = document.getElementById(`ex-assess-${topicIdx}-${exIdx}`);
+  const card = document.getElementById(`ex-card-${topicIdx}-${exIdx}`);
+  assessEl.querySelectorAll('.assess-btn').forEach(b => b.classList.remove('active'));
+  const btn = assessEl.querySelector(`.assess-btn.${result}`);
+  if (btn) btn.classList.add('active');
+  card.style.borderColor = result === 'got' ? 'rgba(72,199,142,.4)' : 'rgba(255,193,7,.35)';
+}
+
+function revealAll(topicIdx, count) {
+  for (let j=0; j<count; j++) {
+    const ta = document.getElementById(`ex-ta-${topicIdx}-${j}`);
+    const cbtn = document.getElementById(`ex-cbtn-${topicIdx}-${j}`);
+    const ansEl = document.getElementById(`ex-ans-${topicIdx}-${j}`);
+    const assessEl = document.getElementById(`ex-assess-${topicIdx}-${j}`);
+    if (ta && !ta.disabled) { ta.disabled = true; ta.classList.add('checked'); }
+    if (cbtn) cbtn.disabled = true;
+    if (ansEl) ansEl.style.display = 'block';
+    if (assessEl) assessEl.classList.add('visible');
+  }
+}
+</script>
+{% endblock %}

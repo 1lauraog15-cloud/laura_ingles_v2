@@ -1,0 +1,105 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Vocabulary
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "📚 Vocabulary" [level=1] [ref=e44]
+        - paragraph [ref=e45]: 92 C1/C2 words · Browse, study with flashcards, fill-in-the-blank, or word match
+      - generic [ref=e46]:
+        - button "📖 Browse" [ref=e47] [cursor=pointer]
+        - button "🃏 Flashcards" [active] [ref=e48] [cursor=pointer]
+        - button "✏️ Fill in the Blank" [ref=e49] [cursor=pointer]
+        - button "🎯 Word Match" [ref=e50] [cursor=pointer]
+      - generic [ref=e610]:
+        - generic [ref=e611]:
+          - generic [ref=e612]: Card 1 / 92
+          - generic [ref=e613]:
+            - button "🔀 Shuffle" [ref=e614] [cursor=pointer]
+            - button "☆ Unknown only" [ref=e615] [cursor=pointer]
+        - generic [ref=e619] [cursor=pointer]:
+          - generic [ref=e620]:
+            - generic [ref=e621]: acquiesce
+            - generic [ref=e622]: acquiesce to/in a decision
+            - generic [ref=e623]: Click to reveal
+          - generic [ref=e624]:
+            - generic [ref=e625]: acquiesce
+            - generic [ref=e626]: ceder / aceptar de mala gana
+            - generic [ref=e627]: Accept something reluctantly but without protest
+            - generic [ref=e628]: "\"She acquiesced to her manager's demands despite her reservations.\""
+            - generic [ref=e629]:
+              - generic [ref=e630]: "Syn:"
+              - generic [ref=e631]: comply
+              - generic [ref=e632]: consent
+              - generic [ref=e633]: yield
+              - generic [ref=e634]: concede
+            - generic [ref=e635]:
+              - generic [ref=e636]: "Ant:"
+              - generic [ref=e637]: resist
+              - generic [ref=e638]: object
+              - generic [ref=e639]: refuse
+              - generic [ref=e640]: protest
+        - paragraph [ref=e641]: Click the card to flip · Use buttons below to navigate
+        - generic [ref=e642]:
+          - button "← Prev" [ref=e643] [cursor=pointer]
+          - button "↺ Flip" [ref=e644] [cursor=pointer]
+          - button "✓ Known" [ref=e645] [cursor=pointer]
+          - button "✗ Review" [ref=e646] [cursor=pointer]
+          - button "Next →" [ref=e647] [cursor=pointer]
+        - generic [ref=e648]: Use ✓ Known or ✗ Review to track progress

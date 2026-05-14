@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home · Laura Inglés{% endblock %}
+{% block topbar_title %}Home{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Welcome back 👋</h1>
+  <p>Your Cambridge C1 / C2 study hub. Pick a section from the sidebar to get started.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;">
+  {% set sections = [
+    ("📚", "Vocabulary",           "vocabulary"),
+    ("⚡", "Phrasal Verbs",        "phrasal_verbs"),
+    ("🔗", "Verbs & Prepositions", "verbs_prepositions"),
+    ("🤝", "Collocations",         "collocations"),
+    ("💬", "Idioms",               "idioms"),
+    ("🔤", "Confusing Expressions","confusing_expressions"),
+    ("🔀", "Connectors",           "connectors"),
+    ("✍️", "Grammar",              "grammar"),
+    ("🎯", "Use of English",       "use_of_english"),
+  ] %}
+  {% for icon, label, endpoint in sections %}
+  <a href="{{ url_for(endpoint) }}" style="text-decoration:none;">
+    <div class="card" style="text-align:center;cursor:pointer;transition:transform .15s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+      <div style="font-size:28px;margin-bottom:8px;">{{ icon }}</div>
+      <div style="font-weight:600;font-size:14px;color:var(--text);">{{ label }}</div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

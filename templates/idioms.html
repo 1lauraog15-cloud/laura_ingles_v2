@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+{% block title %}Idioms · Laura Inglés{% endblock %}
+{% block topbar_title %}Idioms{% endblock %}
+
+{% block extra_head %}
+<style>
+.tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
+.tab-btn{padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+.tab-btn:hover{color:var(--text);border-color:var(--accent)}
+.tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.mode-panel{display:none}.mode-panel.active{display:block}
+.search-bar{width:100%;padding:10px 14px;border-radius:9px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;box-sizing:border-box}
+.search-bar:focus{border-color:var(--accent)}
+.id-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.id-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.id-card:hover{border-color:rgba(225,112,85,.3);transform:translateY(-2px)}
+.id-card.open{border-color:rgba(225,112,85,.35)}
+.id-head{padding:14px 16px}
+.id-idiom{font-size:15px;font-weight:700;color:var(--text);font-style:italic}
+.id-meaning{font-size:12px;color:var(--text-muted);margin-top:3px}
+.id-body{display:none;padding:0 16px 14px;border-top:1px solid var(--border)}
+.id-card.open .id-body{display:block}
+.id-trans{font-size:13px;color:var(--accent-light);font-weight:600;margin-top:10px}
+.ex-text{font-size:13px;color:var(--text-muted);font-style:italic;border-left:2px solid var(--accent);padding-left:10px;margin-top:8px}
+/* Flashcard */
+.fc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.fc-counter{font-size:13px;color:var(--text-muted);font-weight:600}
+.fc-opt-btn{padding:5px 12px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.fc-opt-btn.on{background:rgba(225,112,85,.12);color:var(--accent-light);border-color:rgba(225,112,85,.3)}
+.progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:22px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:.3s}
+.card-scene{perspective:1000px;width:100%;max-width:580px;margin:0 auto;height:300px}
+.card-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s;cursor:pointer}
+.card-3d.flipped{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;background:var(--surface);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 28px;text-align:center}
+.card-face.back{transform:rotateY(180deg);overflow-y:auto;justify-content:flex-start;padding-top:22px}
+.fc-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.fc-btn{padding:10px 22px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:.15s}
+.fc-btn:hover{border-color:var(--accent);color:var(--accent-light)}
+.fc-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fc-flip-hint{text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px}
+/* FIB */
+.fib-wrap{max-width:640px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px}
+.fib-progress{font-size:12px;color:var(--text-muted);font-weight:600;margin-bottom:18px}
+.fib-sentence{font-size:17px;color:var(--text);line-height:2;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin-bottom:20px}
+.fib-input{border:none;border-bottom:2px solid var(--accent);background:transparent;color:var(--text);font-size:15px;font-family:inherit;font-weight:700;outline:none;width:200px;text-align:center;padding:2px 4px}
+.fib-input.correct{border-color:#48c78e;color:#48c78e}
+.fib-input.wrong{border-color:#ff7b7b;color:#ff7b7b}
+.fib-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.fib-btn{padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:.15s}
+.fib-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fib-btn.hint{background:rgba(255,190,0,.1);color:#ffc107;border-color:rgba(255,190,0,.3)}
+.fib-feedback{text-align:center;padding:10px;border-radius:9px;font-size:14px;font-weight:600;margin-bottom:12px;display:none}
+.fib-feedback.correct{background:rgba(72,199,142,.15);color:#48c78e}
+.fib-feedback.wrong{background:rgba(255,91,91,.12);color:#ff7b7b}
+.fib-score{text-align:center;font-size:13px;color:var(--text-muted);font-weight:600}
+/* MCQ */
+.mcq-card{max-width:640px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px}
+.mcq-label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);font-weight:700;margin-bottom:8px}
+.mcq-prompt{font-size:16px;color:var(--text);padding:16px;background:var(--surface2);border-radius:9px;font-style:italic;margin-bottom:20px;line-height:1.6}
+.mcq-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mcq-opt{padding:13px 16px;border-radius:9px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left;transition:.15s;font-style:italic}
+.mcq-opt:hover:not(:disabled){border-color:var(--accent);color:var(--accent-light)}
+.mcq-opt.correct{background:rgba(72,199,142,.2);color:#48c78e;border-color:rgba(72,199,142,.5)}
+.mcq-opt.wrong{background:rgba(255,91,91,.15);color:#ff7b7b;border-color:rgba(255,91,91,.4)}
+.mcq-opt:disabled{cursor:default;opacity:.85}
+.mcq-feedback{margin-top:14px;padding:12px;border-radius:9px;font-size:13.5px;display:none}
+.mcq-feedback.show{display:block}
+.mcq-feedback.correct{background:rgba(72,199,142,.12);color:#48c78e}
+.mcq-feedback.wrong{background:rgba(255,91,91,.1);color:#ff7b7b}
+.mcq-next{margin-top:12px;width:100%;padding:11px;border-radius:9px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:inherit;display:none}
+.mcq-next:hover{background:var(--accent-light)}
+.mcq-score{text-align:center;font-size:13px;color:var(--text-muted);margin-top:10px;font-weight:600}
+.mcq-counter{font-size:13px;color:var(--text-muted);font-weight:600;margin-bottom:16px}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>💬 Idioms &amp; Expressions</h1>
+  <p>{{ items|length }} idioms · Browse, flashcards, fill in the blank, or word match</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('browse',this)">📖 Browse</button>
+  <button class="tab-btn" onclick="switchTab('flashcard',this)">🃏 Flashcards</button>
+  <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill in the Blank</button>
+  <button class="tab-btn" onclick="switchTab('mcq',this)">🎯 Idiom Match</button>
+</div>
+
+<!-- BROWSE -->
+<div id="mode-browse" class="mode-panel active">
+  <input type="text" class="search-bar" id="search-input" placeholder="Search idioms, meanings, translations…" oninput="renderBrowse()">
+  <div class="id-grid" id="id-grid"></div>
+</div>
+
+<!-- FLASHCARD -->
+<div id="mode-flashcard" class="mode-panel">
+  <div class="fc-header">
+    <span class="fc-counter" id="fc-counter">Card 1 / 0</span>
+    <button class="fc-opt-btn" id="fc-shuffle-btn" onclick="toggleShuffle()">🔀 Shuffle</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="fc-progress"></div></div>
+  <div class="card-scene">
+    <div class="card-3d" id="fc-card" onclick="flipCard()">
+      <div class="card-face front">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:12px">What idiom means…</div>
+        <div style="font-size:18px;font-weight:700;color:var(--text);line-height:1.4" id="fc-front-meaning"></div>
+        <div style="font-size:13px;color:var(--accent-light);font-weight:600;margin-top:8px" id="fc-front-trans"></div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:14px">Click to reveal</div>
+      </div>
+      <div class="card-face back">
+        <div style="font-size:22px;font-weight:800;color:var(--text);font-style:italic;margin-bottom:6px;text-align:center" id="fc-back-idiom"></div>
+        <div style="font-size:13px;color:var(--accent-light);font-weight:600;margin-bottom:10px" id="fc-back-trans"></div>
+        <div style="font-size:13px;color:var(--text);margin-bottom:8px;text-align:left;width:100%" id="fc-back-meaning"></div>
+        <div style="font-size:13px;color:var(--text-muted);font-style:italic;border-left:2px solid var(--accent);padding-left:10px;text-align:left;width:100%" id="fc-back-ex"></div>
+      </div>
+    </div>
+  </div>
+  <p class="fc-flip-hint">Click the card to flip</p>
+  <div class="fc-controls">
+    <button class="fc-btn" onclick="fcNav(-1)">← Prev</button>
+    <button class="fc-btn primary" onclick="flipCard()">↺ Flip</button>
+    <button class="fc-btn" onclick="fcNav(1)">Next →</button>
+  </div>
+</div>
+
+<!-- FIB -->
+<div id="mode-fib" class="mode-panel">
+  <div class="fib-wrap">
+    <div class="fib-progress" id="fib-progress">Exercise 1 / 0</div>
+    <div class="fib-sentence" id="fib-sentence"></div>
+    <div class="fib-actions">
+      <button class="fib-btn hint" onclick="fibHint()">💡 Hint</button>
+      <button class="fib-btn primary" id="fib-check-btn" onclick="fibCheck()">Check</button>
+      <button class="fib-btn" id="fib-next-btn" onclick="fibNext()" style="display:none">Next →</button>
+    </div>
+    <div class="fib-feedback" id="fib-feedback"></div>
+    <div class="fib-score" id="fib-score"></div>
+  </div>
+</div>
+
+<!-- MCQ -->
+<div id="mode-mcq" class="mode-panel">
+  <div class="mcq-card">
+    <div class="mcq-counter" id="mcq-counter">Question 1</div>
+    <div class="mcq-label">Which idiom matches this meaning?</div>
+    <div class="mcq-prompt" id="mcq-prompt"></div>
+    <div class="mcq-opts" id="mcq-opts"></div>
+    <div class="mcq-feedback" id="mcq-feedback"></div>
+    <button class="mcq-next" id="mcq-next" onclick="mcqNext()">Next question →</button>
+    <div class="mcq-score" id="mcq-score"></div>
+  </div>
+</div>
+
+<script>
+const ITEMS = {{ items | tojson }};
+
+function deriveAnswer(example, fill) {
+  const parts = fill.split('___________');
+  if (parts.length !== 2) return '';
+  return example.slice(parts[0].length, example.length - parts[1].length).trim().toLowerCase();
+}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function switchTab(mode,btn){
+  document.querySelectorAll('.mode-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('mode-'+mode).classList.add('active');btn.classList.add('active');
+  if(mode==='flashcard')initFlashcard();
+  if(mode==='fib')initFib();
+  if(mode==='mcq')initMcq();
+}
+
+/* BROWSE */
+function renderBrowse(){
+  const q=document.getElementById('search-input').value.toLowerCase();
+  const list=ITEMS.filter(w=>!q||w.idiom.toLowerCase().includes(q)||w.meaning.toLowerCase().includes(q)||w.translation.toLowerCase().includes(q));
+  document.getElementById('id-grid').innerHTML=list.map(w=>`
+    <div class="id-card" onclick="this.classList.toggle('open')">
+      <div class="id-head">
+        <div class="id-idiom">"${w.idiom}"</div>
+        <div class="id-meaning">${w.meaning}</div>
+      </div>
+      <div class="id-body">
+        <div class="id-trans">${w.translation}</div>
+        <div class="ex-text">"${w.example}"</div>
+      </div>
+    </div>`).join('');
+}
+
+/* FLASHCARD */
+let fcDeck=[],fcIndex=0,fcFlipped=false,fcShuffle=false;
+function initFlashcard(){fcDeck=fcShuffle?shuffle([...ITEMS]):[...ITEMS];fcIndex=0;renderFcCard();}
+function renderFcCard(){
+  const w=fcDeck[fcIndex];fcFlipped=false;
+  document.getElementById('fc-card').classList.remove('flipped');
+  document.getElementById('fc-front-meaning').textContent=w.meaning;
+  document.getElementById('fc-front-trans').textContent=w.translation;
+  document.getElementById('fc-back-idiom').textContent='"'+w.idiom+'"';
+  document.getElementById('fc-back-trans').textContent=w.translation;
+  document.getElementById('fc-back-meaning').textContent=w.meaning;
+  document.getElementById('fc-back-ex').textContent='"'+w.example+'"';
+  document.getElementById('fc-counter').textContent=`Card ${fcIndex+1} / ${fcDeck.length}`;
+  document.getElementById('fc-progress').style.width=((fcIndex+1)/fcDeck.length*100)+'%';
+}
+function flipCard(){fcFlipped=!fcFlipped;document.getElementById('fc-card').classList.toggle('flipped',fcFlipped);}
+function fcNav(d){fcIndex=(fcIndex+d+fcDeck.length)%fcDeck.length;renderFcCard();}
+function toggleShuffle(){fcShuffle=!fcShuffle;document.getElementById('fc-shuffle-btn').classList.toggle('on',fcShuffle);initFlashcard();}
+
+/* FIB */
+let fibDeck=[],fibIndex=0,fibCorrect=0,fibAnswered=0,fibChecked=false;
+function initFib(){fibDeck=shuffle([...ITEMS]);fibIndex=0;fibCorrect=0;fibAnswered=0;renderFib();}
+function renderFib(){
+  fibChecked=false;
+  const w=fibDeck[fibIndex];
+  document.getElementById('fib-progress').textContent=`Exercise ${fibIndex+1} / ${fibDeck.length}`;
+  const parts=w.fill.split('___________');
+  const sentEl=document.getElementById('fib-sentence');
+  sentEl.innerHTML=parts.length===2
+    ?`<span>${parts[0]}</span><input class="fib-input" id="fib-input" placeholder="?" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')fibCheck()"><span>${parts[1]}</span>`
+    :`<input class="fib-input" id="fib-input" placeholder="idiom" autocomplete="off" onkeydown="if(event.key==='Enter')fibCheck()">`;
+  document.getElementById('fib-check-btn').style.display='inline-block';
+  document.getElementById('fib-next-btn').style.display='none';
+  const fb=document.getElementById('fib-feedback');
+  fb.style.display='none';fb.className='fib-feedback';
+  updateFibScore();
+  setTimeout(()=>{const i=document.getElementById('fib-input');if(i)i.focus();},50);
+}
+function fibCheck(){
+  if(fibChecked)return;
+  const w=fibDeck[fibIndex];
+  const inp=document.getElementById('fib-input');
+  if(!inp)return;
+  const answer=inp.value.trim().toLowerCase();
+  const correct=deriveAnswer(w.example,w.fill);
+  const isOk=answer===correct||answer===w.idiom.toLowerCase();
+  fibChecked=true;fibAnswered++;if(isOk)fibCorrect++;
+  inp.classList.add(isOk?'correct':'wrong');inp.disabled=true;
+  const fb=document.getElementById('fib-feedback');
+  fb.style.display='block';fb.className='fib-feedback '+(isOk?'correct':'wrong');
+  fb.textContent=isOk?`✓ Correct! "${w.idiom}" — ${w.translation}`:`✗ Answer: "${correct||w.idiom}" — ${w.translation}`;
+  document.getElementById('fib-check-btn').style.display='none';
+  document.getElementById('fib-next-btn').style.display='inline-block';
+  updateFibScore();
+}
+function fibHint(){
+  const inp=document.getElementById('fib-input');
+  if(!inp||fibChecked)return;
+  const ans=deriveAnswer(fibDeck[fibIndex].example,fibDeck[fibIndex].fill)||fibDeck[fibIndex].idiom;
+  inp.value=ans.slice(0,Math.ceil(ans.length/2));inp.focus();
+}
+function fibNext(){fibIndex=(fibIndex+1)%fibDeck.length;if(fibIndex===0){fibCorrect=0;fibAnswered=0;}renderFib();}
+function updateFibScore(){document.getElementById('fib-score').textContent=fibAnswered>0?`Score: ${fibCorrect} / ${fibAnswered}`:''}
+
+/* MCQ */
+let mcqDeck=[],mcqIndex=0,mcqCorrect=0,mcqTotal=0,mcqAnswered=false;
+function initMcq(){mcqDeck=shuffle([...ITEMS]);mcqIndex=0;mcqCorrect=0;mcqTotal=0;renderMcq();}
+function renderMcq(){
+  mcqAnswered=false;
+  const w=mcqDeck[mcqIndex%mcqDeck.length];
+  document.getElementById('mcq-counter').textContent=`Question ${mcqIndex+1}`;
+  document.getElementById('mcq-prompt').textContent=w.meaning+' ('+w.translation+')';
+  const others=shuffle(ITEMS.filter(x=>x.idiom!==w.idiom)).slice(0,3);
+  const opts=shuffle([w,...others]);
+  document.getElementById('mcq-opts').innerHTML=opts.map(o=>
+    `<button class="mcq-opt" onclick="mcqAnswer('${o.idiom.replace(/'/g,"\\'")}','${w.idiom.replace(/'/g,"\\'")}')">"${o.idiom}"</button>`
+  ).join('');
+  const fb=document.getElementById('mcq-feedback');
+  fb.className='mcq-feedback';fb.textContent='';
+  document.getElementById('mcq-next').style.display='none';
+  updateMcqScore();
+}
+function mcqAnswer(chosen,correct){
+  if(mcqAnswered)return;
+  mcqAnswered=true;mcqTotal++;
+  const isOk=chosen===correct;
+  if(isOk)mcqCorrect++;
+  document.querySelectorAll('.mcq-opt').forEach(btn=>{
+    btn.disabled=true;
+    const t=btn.textContent.slice(1,-1);
+    if(t===correct)btn.classList.add('correct');
+    else if(t===chosen&&!isOk)btn.classList.add('wrong');
+  });
+  const w=ITEMS.find(x=>x.idiom===correct);
+  const fb=document.getElementById('mcq-feedback');
+  fb.className='mcq-feedback show '+(isOk?'correct':'wrong');
+  fb.textContent=isOk?`✓ Correct! "${correct}" — ${w.meaning}`:`✗ Answer: "${correct}" — ${w.meaning}`;
+  document.getElementById('mcq-next').style.display='block';
+  updateMcqScore();
+}
+function mcqNext(){
+  mcqIndex++;
+  if(mcqIndex>=mcqDeck.length){mcqDeck=shuffle([...ITEMS]);mcqIndex=0;}
+  renderMcq();
+}
+function updateMcqScore(){document.getElementById('mcq-score').textContent=mcqTotal>0?`Score: ${mcqCorrect} / ${mcqTotal}`:''}
+
+renderBrowse();
+</script>
+{% endblock %}

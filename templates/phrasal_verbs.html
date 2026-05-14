@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% block title %}Phrasal Verbs · Laura Inglés{% endblock %}
+{% block topbar_title %}Phrasal Verbs{% endblock %}
+
+{% block extra_head %}
+<style>
+.tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
+.tab-btn{padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+.tab-btn:hover{color:var(--text);border-color:var(--accent)}
+.tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.mode-panel{display:none}.mode-panel.active{display:block}
+
+/* Browse */
+.search-bar{width:100%;padding:10px 14px;border-radius:9px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;box-sizing:border-box}
+.search-bar:focus{border-color:var(--accent)}
+.pv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.pv-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.pv-card:hover{border-color:rgba(225,112,85,.3);transform:translateY(-2px)}
+.pv-head{padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start}
+.pv-name{font-size:17px;font-weight:700;color:var(--text)}
+.pv-meaning{font-size:12px;color:var(--text-muted);margin-top:3px}
+.pv-trans-badge{font-size:11px;color:var(--accent-light);background:rgba(225,112,85,.1);padding:3px 9px;border-radius:6px;flex-shrink:0;align-self:flex-start;margin-left:8px}
+.pv-body{display:none;padding:0 16px 16px;border-top:1px solid var(--border)}
+.pv-card.open .pv-body{display:block}
+.pv-card.open{border-color:rgba(225,112,85,.35)}
+.ex-text{font-size:13px;color:var(--text-muted);font-style:italic;border-left:2px solid var(--accent);padding-left:10px;margin-top:12px}
+.no-res{color:var(--text-muted);font-size:14px;padding:20px 0}
+
+/* Flashcard */
+.fc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.fc-counter{font-size:13px;color:var(--text-muted);font-weight:600}
+.fc-opt{display:flex;gap:8px}
+.fc-opt-btn{padding:5px 12px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.fc-opt-btn.on{background:rgba(225,112,85,.12);color:var(--accent-light);border-color:rgba(225,112,85,.3)}
+.progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:.3s}
+.card-scene{perspective:1000px;width:100%;max-width:580px;margin:0 auto;height:280px}
+.card-3d{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s;cursor:pointer}
+.card-3d.flipped{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;background:var(--surface);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 28px;text-align:center}
+.card-face.back{transform:rotateY(180deg);overflow-y:auto;justify-content:flex-start;padding-top:22px}
+.fc-pv{font-size:32px;font-weight:800;color:var(--text);letter-spacing:-.5px}
+.fc-sub{font-size:13px;color:var(--text-muted);margin-top:6px}
+.fc-fill-sentence{font-size:16px;color:var(--text-muted);font-style:italic;border-left:2px solid var(--accent);padding-left:10px;text-align:left;width:100%;margin-bottom:8px}
+.fc-back-pv{font-size:24px;font-weight:800;color:var(--text);margin-bottom:4px}
+.fc-back-tr{font-size:13px;color:var(--accent-light);font-weight:600;margin-bottom:8px}
+.fc-back-def{font-size:13px;color:var(--text);margin-bottom:8px;text-align:left;width:100%}
+.fc-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.fc-btn{padding:10px 22px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:.15s}
+.fc-btn:hover{border-color:var(--accent);color:var(--accent-light)}
+.fc-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fc-score{text-align:center;margin-top:12px;font-size:13px;color:var(--text-muted)}
+.fc-flip-hint{text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px}
+
+/* FIB */
+.fib-wrap{max-width:620px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px}
+.fib-progress{font-size:12px;color:var(--text-muted);font-weight:600;margin-bottom:18px}
+.fib-sentence{font-size:17px;color:var(--text);line-height:2;text-align:center;min-height:70px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin-bottom:20px}
+.fib-input{border:none;border-bottom:2px solid var(--accent);background:transparent;color:var(--text);font-size:17px;font-family:inherit;font-weight:700;outline:none;width:150px;text-align:center;padding:2px 4px}
+.fib-input.correct{border-color:#48c78e;color:#48c78e}
+.fib-input.wrong{border-color:#ff7b7b;color:#ff7b7b}
+.fib-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.fib-btn{padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:.15s}
+.fib-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fib-btn.hint{background:rgba(255,190,0,.1);color:#ffc107;border-color:rgba(255,190,0,.3)}
+.fib-feedback{text-align:center;padding:10px;border-radius:9px;font-size:14px;font-weight:600;margin-bottom:12px;display:none}
+.fib-feedback.correct{background:rgba(72,199,142,.15);color:#48c78e}
+.fib-feedback.wrong{background:rgba(255,91,91,.12);color:#ff7b7b}
+.fib-score{text-align:center;font-size:13px;color:var(--text-muted);font-weight:600}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>⚡ Phrasal Verbs</h1>
+  <p>{{ items|length }} phrasal verbs · Browse, study with flashcards, or fill in the blank</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('browse',this)">📖 Browse</button>
+  <button class="tab-btn" onclick="switchTab('flashcard',this)">🃏 Flashcards</button>
+  <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill in the Blank</button>
+</div>
+
+<!-- BROWSE -->
+<div id="mode-browse" class="mode-panel active">
+  <input type="text" class="search-bar" id="search-input" placeholder="Search phrasal verbs or meanings…" oninput="renderBrowse()">
+  <div class="pv-grid" id="pv-grid"></div>
+  <div class="no-res" id="no-res" style="display:none">No results found.</div>
+</div>
+
+<!-- FLASHCARD -->
+<div id="mode-flashcard" class="mode-panel">
+  <div class="fc-header">
+    <span class="fc-counter" id="fc-counter">Card 1 / 0</span>
+    <div class="fc-opt">
+      <button class="fc-opt-btn" id="fc-shuffle-btn" onclick="toggleShuffle()">🔀 Shuffle</button>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="fc-progress"></div></div>
+  <div class="card-scene">
+    <div class="card-3d" id="fc-card" onclick="flipCard()">
+      <div class="card-face front">
+        <div class="fc-sub" style="font-size:11px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;color:var(--text-muted)">What phrasal verb means…</div>
+        <div class="fc-pv" id="fc-front-meaning"></div>
+        <div class="fc-fill-sentence" id="fc-front-fill" style="margin-top:16px;font-size:14px"></div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:10px">Click to reveal</div>
+      </div>
+      <div class="card-face back">
+        <div class="fc-back-pv" id="fc-back-pv"></div>
+        <div class="fc-back-tr" id="fc-back-tr"></div>
+        <div class="fc-back-def" id="fc-back-def"></div>
+        <div class="fc-fill-sentence" id="fc-back-ex"></div>
+      </div>
+    </div>
+  </div>
+  <p class="fc-flip-hint">Click the card to flip</p>
+  <div class="fc-controls">
+    <button class="fc-btn" onclick="fcNav(-1)">← Prev</button>
+    <button class="fc-btn primary" onclick="flipCard()">↺ Flip</button>
+    <button class="fc-btn" onclick="fcNav(1)">Next →</button>
+  </div>
+  <div class="fc-score" id="fc-score"></div>
+</div>
+
+<!-- FIB -->
+<div id="mode-fib" class="mode-panel">
+  <div class="fib-wrap">
+    <div class="fib-progress" id="fib-progress">Exercise 1 / 0</div>
+    <div class="fib-sentence" id="fib-sentence"></div>
+    <div class="fib-actions">
+      <button class="fib-btn hint" onclick="fibHint()">💡 Hint</button>
+      <button class="fib-btn primary" id="fib-check-btn" onclick="fibCheck()">Check</button>
+      <button class="fib-btn" id="fib-next-btn" onclick="fibNext()" style="display:none">Next →</button>
+    </div>
+    <div class="fib-feedback" id="fib-feedback"></div>
+    <div class="fib-score" id="fib-score"></div>
+  </div>
+</div>
+
+<script>
+const ITEMS = {{ items | tojson }};
+
+function deriveAnswer(example, fill) {
+  const BLANK = '___________';
+  const parts = fill.split(BLANK);
+  if (parts.length !== 2) return '';
+  return example.slice(parts[0].length, example.length - parts[1].length).trim().toLowerCase();
+}
+
+function switchTab(mode, btn) {
+  document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode-' + mode).classList.add('active');
+  btn.classList.add('active');
+  if (mode === 'flashcard') initFlashcard();
+  if (mode === 'fib') initFib();
+}
+
+/* ── BROWSE ── */
+function renderBrowse() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const list = ITEMS.filter(w =>
+    !q || w.pv.toLowerCase().includes(q) || w.meaning.toLowerCase().includes(q) ||
+    w.translation.toLowerCase().includes(q)
+  );
+  const grid = document.getElementById('pv-grid');
+  document.getElementById('no-res').style.display = list.length ? 'none' : 'block';
+  grid.innerHTML = list.map(w => `
+    <div class="pv-card" onclick="toggleCard(this)">
+      <div class="pv-head">
+        <div>
+          <div class="pv-name">${w.pv}</div>
+          <div class="pv-meaning">${w.meaning}</div>
+        </div>
+        <span class="pv-trans-badge">${w.translation}</span>
+      </div>
+      <div class="pv-body">
+        <div class="ex-text">"${w.example}"</div>
+      </div>
+    </div>`).join('');
+}
+function toggleCard(el) { el.classList.toggle('open'); }
+
+/* ── FLASHCARD ── */
+let fcDeck = [], fcIndex = 0, fcFlipped = false, fcShuffle = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i>0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function initFlashcard() {
+  fcDeck = fcShuffle ? shuffle([...ITEMS]) : [...ITEMS];
+  fcIndex = 0; renderFcCard();
+}
+
+function renderFcCard() {
+  const w = fcDeck[fcIndex];
+  fcFlipped = false;
+  document.getElementById('fc-card').classList.remove('flipped');
+  document.getElementById('fc-front-meaning').textContent = w.meaning;
+  document.getElementById('fc-front-fill').textContent = '"' + w.fill.replace('___________','?') + '"';
+  document.getElementById('fc-back-pv').textContent = w.pv;
+  document.getElementById('fc-back-tr').textContent = w.translation;
+  document.getElementById('fc-back-def').textContent = w.meaning;
+  document.getElementById('fc-back-ex').textContent = '"' + w.example + '"';
+  document.getElementById('fc-counter').textContent = `Card ${fcIndex+1} / ${fcDeck.length}`;
+  document.getElementById('fc-progress').style.width = ((fcIndex+1)/fcDeck.length*100) + '%';
+}
+
+function flipCard() {
+  fcFlipped = !fcFlipped;
+  document.getElementById('fc-card').classList.toggle('flipped', fcFlipped);
+}
+function fcNav(d) { fcIndex = (fcIndex+d+fcDeck.length)%fcDeck.length; renderFcCard(); }
+function toggleShuffle() {
+  fcShuffle = !fcShuffle;
+  document.getElementById('fc-shuffle-btn').classList.toggle('on', fcShuffle);
+  initFlashcard();
+}
+
+/* ── FIB ── */
+let fibDeck = [], fibIndex = 0, fibCorrect = 0, fibAnswered = 0, fibChecked = false;
+
+function initFib() {
+  fibDeck = shuffle([...ITEMS]);
+  fibIndex = 0; fibCorrect = 0; fibAnswered = 0;
+  renderFib();
+}
+
+function renderFib() {
+  fibChecked = false;
+  const w = fibDeck[fibIndex];
+  document.getElementById('fib-progress').textContent = `Exercise ${fibIndex+1} / ${fibDeck.length}`;
+  const parts = w.fill.split('___________');
+  const sentEl = document.getElementById('fib-sentence');
+  if (parts.length === 2) {
+    sentEl.innerHTML = `<span>${parts[0]}</span><input class="fib-input" id="fib-input" placeholder="?" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')fibCheck()"><span>${parts[1]}</span>`;
+  } else {
+    sentEl.innerHTML = `<input class="fib-input" id="fib-input" placeholder="Type phrasal verb" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')fibCheck()">`;
+  }
+  document.getElementById('fib-check-btn').style.display = 'inline-block';
+  document.getElementById('fib-next-btn').style.display = 'none';
+  const fb = document.getElementById('fib-feedback');
+  fb.style.display = 'none'; fb.className = 'fib-feedback';
+  updateFibScore();
+  setTimeout(() => { const inp = document.getElementById('fib-input'); if(inp) inp.focus(); }, 50);
+}
+
+function fibCheck() {
+  if (fibChecked) return;
+  const w = fibDeck[fibIndex];
+  const inp = document.getElementById('fib-input');
+  if (!inp) return;
+  const answer = inp.value.trim().toLowerCase();
+  const correct = deriveAnswer(w.example, w.fill);
+  const baseForm = w.pv.toLowerCase();
+  const isOk = answer === correct || answer === baseForm;
+  fibChecked = true; fibAnswered++;
+  if (isOk) fibCorrect++;
+  inp.classList.add(isOk ? 'correct' : 'wrong');
+  inp.disabled = true;
+  const fb = document.getElementById('fib-feedback');
+  fb.style.display = 'block';
+  fb.className = 'fib-feedback ' + (isOk ? 'correct' : 'wrong');
+  fb.textContent = isOk
+    ? `✓ Correct! "${w.pv}" — ${w.translation}`
+    : `✗ Answer: "${correct}" (${w.pv}) — ${w.translation}`;
+  document.getElementById('fib-check-btn').style.display = 'none';
+  document.getElementById('fib-next-btn').style.display = 'inline-block';
+  updateFibScore();
+}
+
+function fibHint() {
+  const inp = document.getElementById('fib-input');
+  if (!inp || fibChecked) return;
+  const w = fibDeck[fibIndex];
+  const ans = deriveAnswer(w.example, w.fill) || w.pv;
+  inp.value = ans.slice(0, Math.ceil(ans.length/2));
+  inp.focus();
+}
+
+function fibNext() {
+  fibIndex = (fibIndex+1) % fibDeck.length;
+  if (fibIndex === 0) { fibCorrect = 0; fibAnswered = 0; }
+  renderFib();
+}
+
+function updateFibScore() {
+  document.getElementById('fib-score').textContent = fibAnswered > 0
+    ? `Score: ${fibCorrect} / ${fibAnswered}` : '';
+}
+
+renderBrowse();
+</script>
+{% endblock %}

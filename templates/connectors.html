@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+{% block title %}Connectors · Laura Inglés{% endblock %}
+{% block topbar_title %}Connectors{% endblock %}
+
+{% block extra_head %}
+<style>
+.tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap}
+.tab-btn{padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+.tab-btn:hover{color:var(--text);border-color:var(--accent)}
+.tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.mode-panel{display:none}.mode-panel.active{display:block}
+
+/* Category tabs inside browse */
+.cat-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.cat-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.cat-btn:hover{color:var(--text);border-color:var(--accent)}
+.cat-btn.active{background:rgba(225,112,85,.12);color:var(--accent-light);border-color:rgba(225,112,85,.3)}
+
+.cat-section{display:none}.cat-section.active{display:block}
+.cat-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.cn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.cn-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .15s}
+.cn-card:hover{border-color:rgba(225,112,85,.3);transform:translateY(-2px)}
+.cn-card.open{border-color:rgba(225,112,85,.35)}
+.cn-head{padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.cn-word{font-size:16px;font-weight:700;color:var(--text)}
+.cn-trans{font-size:12px;color:var(--text-muted)}
+.cn-body{display:none;padding:0 16px 12px;border-top:1px solid var(--border)}
+.cn-card.open .cn-body{display:block}
+.ex-text{font-size:13px;color:var(--text-muted);font-style:italic;border-left:2px solid var(--accent);padding-left:10px;margin-top:10px}
+
+/* FIB */
+.fib-wrap{max-width:640px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px}
+.fib-progress{font-size:12px;color:var(--text-muted);font-weight:600;margin-bottom:6px}
+.fib-cat-badge{display:inline-block;font-size:11px;color:var(--accent-light);background:rgba(225,112,85,.1);padding:3px 10px;border-radius:6px;margin-bottom:16px;font-weight:600}
+.fib-sentence{font-size:17px;color:var(--text);line-height:2;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin-bottom:20px}
+.fib-input{border:none;border-bottom:2px solid var(--accent);background:transparent;color:var(--text);font-size:16px;font-family:inherit;font-weight:700;outline:none;width:180px;text-align:center;padding:2px 4px}
+.fib-input.correct{border-color:#48c78e;color:#48c78e}
+.fib-input.wrong{border-color:#ff7b7b;color:#ff7b7b}
+.fib-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.fib-btn{padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:.15s}
+.fib-btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fib-btn.hint{background:rgba(255,190,0,.1);color:#ffc107;border-color:rgba(255,190,0,.3)}
+.fib-feedback{text-align:center;padding:10px;border-radius:9px;font-size:14px;font-weight:600;margin-bottom:12px;display:none}
+.fib-feedback.correct{background:rgba(72,199,142,.15);color:#48c78e}
+.fib-feedback.wrong{background:rgba(255,91,91,.12);color:#ff7b7b}
+.fib-score{text-align:center;font-size:13px;color:var(--text-muted);font-weight:600}
+
+/* Cat filter in fib */
+.fib-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;justify-content:center}
+.fib-filter-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s}
+.fib-filter-btn.active{background:rgba(225,112,85,.12);color:var(--accent-light);border-color:rgba(225,112,85,.3)}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🔀 Connectors</h1>
+  <p>{{ items|length }} connectors in {{ items.keys()|list|length }} categories · Browse by function or practise fill in the blank</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('browse',this)">📖 Browse by Category</button>
+  <button class="tab-btn" onclick="switchTab('fib',this)">✏️ Fill in the Blank</button>
+</div>
+
+<!-- BROWSE -->
+<div id="mode-browse" class="mode-panel active">
+  <div class="cat-tabs" id="cat-tabs"></div>
+  <div id="cat-sections"></div>
+</div>
+
+<!-- FIB -->
+<div id="mode-fib" class="mode-panel">
+  <div class="fib-wrap">
+    <div class="fib-progress" id="fib-progress">Exercise 1 / 0</div>
+    <div id="fib-cat-badge" class="fib-cat-badge"></div>
+    <div class="fib-sentence" id="fib-sentence"></div>
+    <div class="fib-actions">
+      <button class="fib-btn hint" onclick="fibHint()">💡 Hint</button>
+      <button class="fib-btn primary" id="fib-check-btn" onclick="fibCheck()">Check</button>
+      <button class="fib-btn" id="fib-next-btn" onclick="fibNext()" style="display:none">Next →</button>
+    </div>
+    <div class="fib-feedback" id="fib-feedback"></div>
+    <div class="fib-score" id="fib-score"></div>
+  </div>
+  <div class="fib-filter" id="fib-filter" style="margin-top:16px"></div>
+</div>
+
+<script>
+const RAW = {{ items | tojson }};
+
+/* flatten with category tag */
+const ALL_ITEMS = [];
+for (const [cat, arr] of Object.entries(RAW)) {
+  arr.forEach(item => ALL_ITEMS.push({ ...item, category: cat }));
+}
+
+const CAT_ICONS = {
+  'Addition':'➕','Contrast':'⚡','Concession':'🤝','Cause & Result':'🔁',
+  'Purpose':'🎯','Exemplification':'💡','Emphasis':'🔥'
+};
+
+function switchTab(mode, btn) {
+  document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode-' + mode).classList.add('active');
+  btn.classList.add('active');
+  if (mode === 'fib') initFib();
+}
+
+/* BROWSE */
+(function buildBrowse() {
+  const cats = Object.keys(RAW);
+  const tabsEl = document.getElementById('cat-tabs');
+  const sectsEl = document.getElementById('cat-sections');
+
+  cats.forEach((cat, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (i===0 ? ' active' : '');
+    btn.textContent = (CAT_ICONS[cat]||'•') + ' ' + cat;
+    btn.onclick = () => {
+      document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.cat-section').forEach(s=>s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('cat-' + i).classList.add('active');
+    };
+    tabsEl.appendChild(btn);
+
+    const sec = document.createElement('div');
+    sec.className = 'cat-section' + (i===0 ? ' active' : '');
+    sec.id = 'cat-' + i;
+    sec.innerHTML = `<div class="cat-title">${CAT_ICONS[cat]||''} ${cat}</div>
+      <div class="cn-grid">${RAW[cat].map(w=>`
+        <div class="cn-card" onclick="this.classList.toggle('open')">
+          <div class="cn-head">
+            <div class="cn-word">${w.word}</div>
+            <div class="cn-trans">${w.translation}</div>
+          </div>
+          <div class="cn-body"><div class="ex-text">"${w.example}"</div></div>
+        </div>`).join('')}
+      </div>`;
+    sectsEl.appendChild(sec);
+  });
+})();
+
+/* FIB */
+let fibDeck=[], fibIndex=0, fibCorrect=0, fibAnswered=0, fibChecked=false;
+let fibCatFilter = 'all';
+
+function buildFibFilter() {
+  const filterEl = document.getElementById('fib-filter');
+  const cats = ['all', ...Object.keys(RAW)];
+  filterEl.innerHTML = cats.map(c =>
+    `<button class="fib-filter-btn${c==='all'?' active':''}" onclick="setFibCat('${c}',this)">${c==='all'?'All categories':c}</button>`
+  ).join('');
+}
+
+function setFibCat(cat, btn) {
+  fibCatFilter = cat;
+  document.querySelectorAll('.fib-filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  initFib();
+}
+
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function initFib() {
+  const base = fibCatFilter === 'all' ? ALL_ITEMS : ALL_ITEMS.filter(x => x.category === fibCatFilter);
+  fibDeck = shuffle(base);
+  fibIndex=0;fibCorrect=0;fibAnswered=0;
+  renderFib();
+}
+
+function renderFib() {
+  fibChecked = false;
+  const w = fibDeck[fibIndex];
+  document.getElementById('fib-progress').textContent = `Exercise ${fibIndex+1} / ${fibDeck.length}`;
+  document.getElementById('fib-cat-badge').textContent = (CAT_ICONS[w.category]||'') + ' ' + w.category;
+  const parts = w.fill.split('___________');
+  const sentEl = document.getElementById('fib-sentence');
+  sentEl.innerHTML = parts.length===2
+    ? `<span>${parts[0]}</span><input class="fib-input" id="fib-input" placeholder="?" autocomplete="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')fibCheck()"><span>${parts[1]}</span>`
+    : `<input class="fib-input" id="fib-input" placeholder="connector" autocomplete="off" onkeydown="if(event.key==='Enter')fibCheck()">`;
+  document.getElementById('fib-check-btn').style.display='inline-block';
+  document.getElementById('fib-next-btn').style.display='none';
+  const fb=document.getElementById('fib-feedback');
+  fb.style.display='none';fb.className='fib-feedback';
+  updateFibScore();
+  setTimeout(()=>{const i=document.getElementById('fib-input');if(i)i.focus();},50);
+}
+
+function fibCheck() {
+  if(fibChecked)return;
+  const w=fibDeck[fibIndex];
+  const inp=document.getElementById('fib-input');
+  if(!inp)return;
+  const answer=inp.value.trim().toLowerCase();
+  const isOk=answer===w.word.toLowerCase();
+  fibChecked=true;fibAnswered++;if(isOk)fibCorrect++;
+  inp.classList.add(isOk?'correct':'wrong');inp.disabled=true;
+  const fb=document.getElementById('fib-feedback');
+  fb.style.display='block';fb.className='fib-feedback '+(isOk?'correct':'wrong');
+  fb.textContent=isOk
+    ?`✓ Correct! "${w.word}" — ${w.translation}`
+    :`✗ Answer: "${w.word}" — ${w.translation}`;
+  document.getElementById('fib-check-btn').style.display='none';
+  document.getElementById('fib-next-btn').style.display='inline-block';
+  updateFibScore();
+}
+
+function fibHint() {
+  const inp=document.getElementById('fib-input');
+  if(!inp||fibChecked)return;
+  const ans=fibDeck[fibIndex].word;
+  inp.value=ans.slice(0,Math.ceil(ans.length/2));inp.focus();
+}
+
+function fibNext(){
+  fibIndex=(fibIndex+1)%fibDeck.length;
+  if(fibIndex===0){fibCorrect=0;fibAnswered=0;}
+  renderFib();
+}
+function updateFibScore(){document.getElementById('fib-score').textContent=fibAnswered>0?`Score: ${fibCorrect} / ${fibAnswered}`:''}
+
+buildFibFilter();
+</script>
+{% endblock %}

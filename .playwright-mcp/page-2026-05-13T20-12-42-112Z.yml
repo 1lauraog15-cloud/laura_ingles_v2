@@ -1,0 +1,113 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🎓
+      - generic [ref=e6]:
+        - generic [ref=e7]: Laura Inglés
+        - generic [ref=e8]: C1 / C2 · Cambridge
+    - navigation [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: General
+        - link "🏠 Home" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]: 🏠
+          - text: Home
+      - generic [ref=e14]:
+        - generic [ref=e15]: Lexis
+        - link "📚 Vocabulary" [ref=e16] [cursor=pointer]:
+          - /url: /vocabulary
+          - generic [ref=e17]: 📚
+          - text: Vocabulary
+        - link "⚡ Phrasal Verbs" [ref=e18] [cursor=pointer]:
+          - /url: /phrasal-verbs
+          - generic [ref=e19]: ⚡
+          - text: Phrasal Verbs
+        - link "🔗 Verbs & Prepositions" [ref=e20] [cursor=pointer]:
+          - /url: /verbs-prepositions
+          - generic [ref=e21]: 🔗
+          - text: Verbs & Prepositions
+        - link "🤝 Collocations" [ref=e22] [cursor=pointer]:
+          - /url: /collocations
+          - generic [ref=e23]: 🤝
+          - text: Collocations
+        - link "💬 Idioms" [ref=e24] [cursor=pointer]:
+          - /url: /idioms
+          - generic [ref=e25]: 💬
+          - text: Idioms
+        - link "🔤 Confusing Expressions" [ref=e26] [cursor=pointer]:
+          - /url: /confusing-expressions
+          - generic [ref=e27]: 🔤
+          - text: Confusing Expressions
+      - generic [ref=e28]:
+        - generic [ref=e29]: Writing & Grammar
+        - link "🔀 Connectors" [ref=e30] [cursor=pointer]:
+          - /url: /connectors
+          - generic [ref=e31]: 🔀
+          - text: Connectors
+        - link "✍️ Grammar" [ref=e32] [cursor=pointer]:
+          - /url: /grammar
+          - generic [ref=e33]: ✍️
+          - text: Grammar
+      - generic [ref=e34]:
+        - generic [ref=e35]: Exam Practice
+        - link "🎯 Use of English" [ref=e36] [cursor=pointer]:
+          - /url: /use-of-english
+          - generic [ref=e37]: 🎯
+          - text: Use of English
+  - generic [ref=e38]:
+    - banner [ref=e39]:
+      - generic [ref=e40]: Grammar
+      - generic [ref=e41]: C1 / C2
+    - main [ref=e42]:
+      - generic [ref=e43]:
+        - heading "✍️ Grammar" [level=1] [ref=e44]
+        - paragraph [ref=e45]: 8 grammar topics · C1/C2 structures for Cambridge writing and transformation tasks
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - button "Inverted Conditionals 4 exercises" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]: Inverted Conditionals
+            - generic [ref=e50]: 4 exercises
+          - button "Cleft Sentences 4 exercises" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]: Cleft Sentences
+            - generic [ref=e53]: 4 exercises
+          - button "Participle Clauses 4 exercises" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]: Participle Clauses
+            - generic [ref=e56]: 4 exercises
+          - button "Subjunctive & Formal Structures 4 exercises" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: Subjunctive & Formal Structures
+            - generic [ref=e59]: 4 exercises
+          - button "Passive & Reporting Structures 4 exercises" [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]: Passive & Reporting Structures
+            - generic [ref=e62]: 4 exercises
+          - button "Emphasis & Fronting 4 exercises" [ref=e63] [cursor=pointer]:
+            - generic [ref=e64]: Emphasis & Fronting
+            - generic [ref=e65]: 4 exercises
+          - button "Mixed Conditionals 4 exercises" [ref=e66] [cursor=pointer]:
+            - generic [ref=e67]: Mixed Conditionals
+            - generic [ref=e68]: 4 exercises
+          - button "Hedging & Academic Tone 4 exercises" [ref=e69] [cursor=pointer]:
+            - generic [ref=e70]: Hedging & Academic Tone
+            - generic [ref=e71]: 4 exercises
+        - generic [ref=e73]:
+          - heading "Inverted Conditionals" [level=2] [ref=e74]
+          - generic [ref=e75]:
+            - button "📖 Explanation" [ref=e76] [cursor=pointer]
+            - button "✏️ Practice (4)" [ref=e77] [cursor=pointer]
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - text: In
+              - strong [ref=e80]: formal English
+              - text: ", 'if' can be omitted and the auxiliary moved before the subject:"
+              - text: •
+              - strong [ref=e81]: Had + subject + past participle
+              - text: → If + subject + had + past participle →
+              - emphasis [ref=e82]: Had I known, I would have acted sooner.
+              - text: •
+              - strong [ref=e83]: Were + subject + to + infinitive
+              - text: → If + subject + were to →
+              - emphasis [ref=e84]: Were she to resign, the company would be in difficulty.
+              - text: •
+              - strong [ref=e85]: Should + subject + infinitive
+              - text: → If + subject + should →
+              - emphasis [ref=e86]: Should you need assistance, please contact us.
+            - button "Start Exercises →" [ref=e88] [cursor=pointer]
